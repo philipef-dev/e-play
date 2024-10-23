@@ -1,13 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
-const colors = {
-    white: '#333',
-    black: '#111',
-    gray: '#EEE',
-    green: '#10AC84'
-}
 
 export const GlobalStyle = createGlobalStyle`
+    :root {
+        --white: #333;
+        --black: #111;
+        --gray: #EEE;
+        --green: #10AC84;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -16,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: ${colors.black};
-        color: ${colors.white}
+        background-color: var(--black);
+        color: var(--white)
     }
 `
