@@ -1,6 +1,6 @@
 import { HeaderBar, LinkCart, Links, LinksItem } from './styles'
-import logoEplay from '../../assets/logo.svg'
-import carrinhoIcon from '../../assets/carrinho.svg'
+import logoEplay from '../../assets/images/logo.svg'
+import carrinhoIcon from '../../assets/images/carrinho.svg'
 
 const Header = () => (
     <HeaderBar>
