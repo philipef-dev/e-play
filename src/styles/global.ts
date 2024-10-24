@@ -1,11 +1,11 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        --white: #333;
+        --white: #EEE;
         --black: #111;
-        --gray: #EEE;
+        --gray: #333;
         --green: #10AC84;
     }
 
@@ -20,4 +20,11 @@ export const GlobalStyle = createGlobalStyle`
         background-color: var(--black);
         color: var(--white)
     }
+`
+
+export const Container = styled.div`
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+
 `
