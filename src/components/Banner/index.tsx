@@ -1,5 +1,7 @@
+import { ImageBanner } from "./styles"
+
 const Banner = () => (
-    <h1>Oi</h1>
+    <ImageBanner />
 )
 
 export default Banner
