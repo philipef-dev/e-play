@@ -1,21 +1,27 @@
 import styled from "styled-components";
-import bannerImg from "../../assets/images/banner-homem-aranha.png"
+import { TagContainer } from "../Tag/styles";
 
 export const ImageBanner = styled.div`
-    height: 560px;
     max-width: 100%;
+    height: 560px;
     display: block;
-    background-image: url(${bannerImg});
     background-size: cover;
     background-repeat: no-repeat;
-    padding-bottom: 56px;
-    padding-top: 32px;
+    
+    .container {
+        position: relative;
+        padding-top: 340px;
+    }
+
+    ${TagContainer} {
+        position: absolute;
+        top: 32px;
+    }
 `
 
 export const Titulo = styled.h2`
     font-size: 36px;
     max-width: 450px;
-    margin-top: 340px;
 `
 
 export const Precos = styled.p`
