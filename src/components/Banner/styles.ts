@@ -8,12 +8,14 @@ export const ImageBanner = styled.div`
     background-image: url(${bannerImg});
     background-size: cover;
     background-repeat: no-repeat;
-    padding-top: 340px;
+    padding-bottom: 56px;
+    padding-top: 32px;
 `
 
 export const Titulo = styled.h2`
     font-size: 36px;
     max-width: 450px;
+    margin-top: 340px;
 `
 
 export const Precos = styled.p`
