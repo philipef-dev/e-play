@@ -1,12 +1,26 @@
-import styled from "styled-components";
+import { ButtonContainer, ButtonLink } from "./styles"
 
-export const ButtonContainer = styled.button`
-    padding: 8px 16px;
-    font-weight: bold;
-    border: 2px solid var(--gray);
-    background: transparent;
-    border-radius: 8px;
-    color: var(--white);
-    font-size: 16px;
-    text-decoration: none;
-`
+export type Props = {
+    type: 'button' | 'link';
+    title: string;
+    to?: string;
+    onClick?: () => void;
+    children: string;
+}
+
+const Button = ({ children, title, type, to, onClick }: Props) => {
+    if (type === 'button') {
+        return (
+            <ButtonContainer type="button" title={title} onClick={onClick}>
+                {children}
+            </ButtonContainer>
+        )
+    }
+    return (
+        <ButtonLink to={to as string} title={title}>
+            {children}
+        </ButtonLink>
+    )
+}
+
+export default Button

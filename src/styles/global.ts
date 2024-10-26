@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-family: 'Roboto', sans-serif;
         list-style: none;
+        box-sizing: border-box;
 
     }
 
