@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { TagContainer } from "../Tag/styles";
 
 export const Card = styled.div`
-    background-color: var(--black);
+    background: var(--gray);
     border-radius: 8px;
     padding: 8px;
 
