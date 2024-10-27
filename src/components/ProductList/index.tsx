@@ -3,10 +3,10 @@ import { Container, List, Titulo } from "./styles"
 
 type Props = {
     title: string;
-    background: 'gray' | 'black';
+    // background: 'gray' | 'black';
 }
 
-const ProductsList = ({ title, background }: Props) => (
+const ProductsList = ({ title }: Props) => (
     <Container>
         <div className="container">
             <Titulo>{title}</Titulo>
