@@ -11,10 +11,39 @@ const ProductsList = ({ title, background }: Props) => (
         <div className="container">
             <Titulo>{title}</Titulo>
             <List>
-                <Product />
-                <Product />
-                <Product />
-                <Product />
+                <Product
+                    image="https://via.placeholder.com/222x250"
+                    title="Resident Evil 4"
+                    genero="Ação"
+                    system="Windows"
+                    infos={['R$ 150','10%' ]}
+                    description="lorem"
+
+                />
+                <Product
+                    image="https://via.placeholder.com/222x250"
+                    title="Resident Evil 4"
+                    genero="Ação"
+                    system="Windows"
+                    infos={['R$ 150','10%' ]}
+                    description="teste"
+                />
+                <Product
+                    image="https://via.placeholder.com/222x250"
+                    title="Resident Evil 4"
+                    genero="Ação"
+                    system="Windows"
+                    infos={['R$ 150','10%' ]}
+                    description="teste"
+                />
+                <Product
+                    image="https://via.placeholder.com/222x250"
+                    title="Resident Evil 4"
+                    genero="Ação"
+                    system="Windows"
+                    infos={['R$ 150','10%' ]}
+                    description="teste"
+                />
             </List>
         </div>
     </Container>

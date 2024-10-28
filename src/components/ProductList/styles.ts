@@ -13,7 +13,6 @@ export const Container = styled.section<Omit<Props, 'title'>>`
         background === 'black' ? 'var(--gray)' : 'var(--black)'
     )};
     }
-
 `
 
 export const List = styled.ul`
