@@ -1,4 +1,4 @@
-export class Game {
+class Game {
     genero: string;
     title: string;
     system: string;
@@ -18,6 +18,8 @@ export class Game {
     }
 }
 
+
+export default Game;
 
 
 

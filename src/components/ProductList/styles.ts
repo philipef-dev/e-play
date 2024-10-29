@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Props } from '.'
 import { Card } from "../Product/styles";
+import { Props } from '.'
 
-export const Container = styled.section<Omit<Props, 'title'>>`
+export const Container = styled.section<Omit<Props, 'title' | 'games'>>`
     padding: 32px 0;
     background: ${({ background }) => (
         background === 'black' ? 'var(--black)' : 'var(--gray)'
