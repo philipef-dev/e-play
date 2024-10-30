@@ -9,6 +9,7 @@ import zeldaPng from '../../assets/images/zelda.png'
 import fifaPng from '../../assets/images/fifa.png'
 
 import Game from "../../model/Game";
+import Footer from "../../components/Footer";
 
 const promocoes: Game[] = [
     {
@@ -93,6 +94,7 @@ const Home = () => (
         <Banner />
         <ProductsList games={promocoes} title="Promoções" background='gray' />
         <ProductsList games={emBreve} title="Em breve" background='black' />
+        <Footer />
     </>
 )
 
