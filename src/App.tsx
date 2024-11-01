@@ -1,16 +1,10 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import Header from "./components/Header"
 import { GlobalStyle } from "./styles/global"
-import Home from './pages/Home'
-import Categories from './pages/Categories'
+import Rotas from './routes'
 
-const Rotas = () => (
-  <Routes>
-    <Route path='/' element={<Home />} />
-    <Route path='categories' element={<Categories />} />
-  </Routes>
-)
+
 
 function App() {
   return (
