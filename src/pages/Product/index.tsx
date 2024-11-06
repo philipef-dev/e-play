@@ -4,7 +4,9 @@ const Product = () => {
     const { id } = useParams();
 
     return (
-        <div> Produto:{id}</div>
+        <>
+            <div> Produto:{id}</div>
+        </>
     )
 }
 

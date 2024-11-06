@@ -3,7 +3,6 @@ import residentEvilPng from '../../assets/images/resident.png';
 import fifaPng from '../../assets/images/fifa.png'
 
 import Game from "../../model/Game";
-import Footer from "../../components/Footer";
 
 const promocoes: Game[] = [
     {
@@ -50,7 +49,6 @@ const Categories = () => (
         <ProductsList games={promocoes} title="Ação" background='black' />
         <ProductsList games={promocoes} title="Aventura" background='gray' />
         <ProductsList games={promocoes} title="FPS" background='black' />     
-        <Footer/>   
     </>
 )
 

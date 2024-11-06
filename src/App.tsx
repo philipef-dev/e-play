@@ -3,19 +3,21 @@ import { BrowserRouter } from 'react-router-dom'
 import Header from "./components/Header"
 import { GlobalStyle } from "./styles/global"
 import Rotas from './routes'
+import Footer from './components/Footer'
 
 
 
 function App() {
   return (
     <BrowserRouter>
+    <GlobalStyle />
       <div className="container">
         <Header />
       </div>
       <Rotas />
-      <GlobalStyle />
+      <Footer/>
     </BrowserRouter>
   )
 }
 
-export default App
+ export default App
