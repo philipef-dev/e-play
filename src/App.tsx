@@ -5,8 +5,6 @@ import { GlobalStyle } from "./styles/global"
 import Rotas from './routes'
 import Footer from './components/Footer'
 
-
-
 function App() {
   return (
     <BrowserRouter>
