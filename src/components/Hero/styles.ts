@@ -9,7 +9,7 @@ export const BannerHero = styled.div`
     padding-top: 20px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;
+    background-size: cover;
 
     ${TagContainer} {
         margin-right: 8px;
