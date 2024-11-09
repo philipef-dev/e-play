@@ -4,7 +4,9 @@ import starWarsImg from '../../assets/images/star_wars.png'
 import fifaImg from '../../assets/images/fifa.png'
 import zoomIcon from '../../assets/images/botao-zoom.svg'
 import playIcon from '../../assets/images/botao-play.svg'
-import { Action, Item, Items } from "./styles";
+import spiderManImg from '../../assets/images/banner-homem-aranha.png'
+import closeIcon from '../../assets/images/closeIcon.svg'
+import { Action, Item, Items, Modal, ModalContent } from "./styles";
 
 type GalleryItem = {
     type: 'image' | 'video',
@@ -60,10 +62,16 @@ const Gallery = ({ defaultCover, name }: Props) => {
                     ))}
                 </Items >
             </Section>
-            <div>
-                {/* Parei no minuto 18 crie a galera parte II */}
-                <img src="" alt="" />
-            </div>
+            <Modal>
+                <ModalContent className="container">
+                    <header>
+                        <h4>{name}</h4>
+                        <img src={closeIcon} alt="Ícone de fechar" />
+                    </header>
+                    <img src={spiderManImg} alt="Imagem Homem Aranha" />
+                </ModalContent>
+                <div className="overlay" />
+            </Modal>
         </>
     )
 }
