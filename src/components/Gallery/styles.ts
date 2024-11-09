@@ -10,8 +10,9 @@ export const Action = styled.div`
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 98%;
         background: rgba(0, 0, 0, 0.73);
+        border-radius: 8px;
 
         display: flex;
         align-items: center;
