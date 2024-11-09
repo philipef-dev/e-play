@@ -27,7 +27,7 @@ const Footer = () => (
                     <a href="#">Em breve</a>
                 </li>
             </FooterItens>
-            <p>2023 - © E-PLAY Todos os direitos reservados</p>
+            <p>2024 - © E-PLAY Todos os direitos reservados</p>
         </div>
     </FooterSection>
 )

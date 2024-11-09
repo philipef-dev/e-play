@@ -1,4 +1,5 @@
 // import { useParams } from 'react-router-dom';
+import Gallery from '../../components/Gallery';
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
 
@@ -20,11 +21,8 @@ const Product = () => {
                 </p>
             </Section>
 
-            <Section title='Galeria' background='black'>
-                <p>
-                    Aqui vai entrar os cards com a galeria
-                </p>
-            </Section>
+            <Gallery />
+
         </>
     )
 }
