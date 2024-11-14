@@ -23,7 +23,6 @@ const Product = () => {
             </Section>
 
             <Gallery name='Jogo teste' defaultCover={residentImg} />
-
         </>
     )
 }
