@@ -88,7 +88,7 @@ const Gallery = ({ defaultCover, name }: Props) => {
                     ))}
                 </Items >
             </Section >
-            <Modal className={modal.isVisible ? ('visible') : ('')}>
+            <Modal className={modal.isVisible ? 'visible' : ''}>
                 <ModalContent className="container" >
                     <header>
                         <h4>{name}</h4>
@@ -102,7 +102,6 @@ const Gallery = ({ defaultCover, name }: Props) => {
                         <img src={modal.url} alt='' />
                     ) : (
                         <iframe src={modal.url}
-                            frameBorder={0}
                         />
                     )}
 
