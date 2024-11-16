@@ -7,6 +7,17 @@ export const ImageBanner = styled.div`
     display: block;
     background-size: cover;
     background-repeat: no-repeat;
+    position: relative;
+
+    &::after {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.7);
+        content: ''        
+    }
     
     .container {
         position: relative;
@@ -14,12 +25,13 @@ export const ImageBanner = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
+        z-index: 1;
     }
 
     ${TagContainer} {
         position: absolute;
         top: 32px;
-    }
+    }    
 `
 
 export const Titulo = styled.h2`

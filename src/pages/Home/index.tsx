@@ -48,7 +48,6 @@ const Home = () => {
             .then((res) => setEmBreve(res))
     }, [])
 
-    // Parei no minuto 19
     return (
         <>
             <Banner />
