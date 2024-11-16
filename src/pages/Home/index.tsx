@@ -42,14 +42,13 @@ const Home = () => {
         fetch('https://fake-api-tau.vercel.app/api/eplay/promocoes')
             .then((res) => res.json())
             .then((res) => setPromocoes(res))
-    }, [])
 
-    useEffect(() => {
-        fetch('https://fake-api-tau.vercel.app/api/eplay/promocoes')
+        fetch('https://fake-api-tau.vercel.app/api/eplay/em-breve')
             .then((res) => res.json())
             .then((res) => setEmBreve(res))
-    })
+    }, [])
 
+    // Parei no minuto 19
     return (
         <>
             <Banner />
@@ -57,7 +56,6 @@ const Home = () => {
             <ProductsList games={emBreve} title="Em breve" background='black' />
         </>
     )
-
 }
 
 export default Home;
