@@ -7,11 +7,8 @@ import playIcon from '../../assets/images/botao-play.svg'
 import closeIcon from '../../assets/images/closeIcon.svg'
 import { Action, Item, Items, Modal, ModalContent } from "./styles";
 import { useState } from "react";
+import { GalleryItem } from "../../pages/Home";
 
-type GalleryItem = {
-    type: 'image' | 'video',
-    url: string
-}
 
 const moka: GalleryItem[] = [
     {
