@@ -14,15 +14,21 @@ const Banner = () => {
             .then((res) => setGame(res))
     }, [])
 
+    if (!game) {
+        return (
+            <h3>Carregando...</h3>
+        )
+    }
+
     return (
-        <ImageBanner style={{ backgroundImage: `url(${game?.media.cover})` }}>
+        <ImageBanner style={{ backgroundImage: `url(${game.media.cover})` }}>
             <div className="container">
                 <Tag size="big">Destaque do dia</Tag>
                 <div>
-                    <Titulo>{game?.name} </Titulo>
+                    <Titulo>{game.name} </Titulo>
                     <Precos>
-                        De <span> {formatPrice(game?.prices.old)}</span>  <br />
-                        por apenas {formatPrice(game?.prices.current)}
+                        De <span> {formatPrice(game.prices.old)}</span>  <br />
+                        por apenas {formatPrice(game.prices.current)}
                     </Precos>
                 </div>
                 <div>
