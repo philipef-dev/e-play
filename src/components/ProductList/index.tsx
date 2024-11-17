@@ -40,7 +40,8 @@ const ProductsList = ({ title, background, games }: Props) => {
                             genero={game.details.category}
                             system={game.details.system}
                             infos={getGameTags(game)}
-                            description={game.description} />
+                            description={game.description}
+                        />
                     ))}
                 </List>
             </div>
