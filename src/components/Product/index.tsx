@@ -21,7 +21,6 @@ const Product = ({ title, system, description, genero, image, infos }: Props) =>
     return (
         <Card>
             <img src={image} alt={title} />
-
             <Infos>
                 {infos.map(info => <Tag size="small" key={info}>{info}</Tag>)}
             </Infos>

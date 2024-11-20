@@ -1,7 +1,4 @@
 import Section from "../Section"
-import zeldaImg from '../../assets/images/zelda.png';
-import starWarsImg from '../../assets/images/star_wars.png'
-import fifaImg from '../../assets/images/fifa.png'
 import zoomIcon from '../../assets/images/botao-zoom.svg'
 import playIcon from '../../assets/images/botao-play.svg'
 import closeIcon from '../../assets/images/closeIcon.svg'
@@ -9,36 +6,17 @@ import { Action, Item, Items, Modal, ModalContent } from "./styles";
 import { useState } from "react";
 import { GalleryItem } from "../../pages/Home";
 
-
-const moka: GalleryItem[] = [
-    {
-        type: 'image',
-        url: zeldaImg
-    },
-    {
-        type: 'image',
-        url: starWarsImg
-    },
-    {
-        type: 'image',
-        url: fifaImg
-    },
-    {
-        type: 'video',
-        url: 'https://www.youtube.com/embed/skUWFSK9TdM?si=xZETnmWRp-6sSksQ'
-    }
-]
-
 type Props = {
     defaultCover: string
     name: string
+    items: GalleryItem[]
 }
 
 interface ModalState extends GalleryItem {
     isVisible: boolean;
 }
 
-const Gallery = ({ defaultCover, name }: Props) => {
+const Gallery = ({ defaultCover, name, items }: Props) => {
     const [modal, setModal] = useState<ModalState>({
         isVisible: false,
         type: 'image',
@@ -67,7 +45,7 @@ const Gallery = ({ defaultCover, name }: Props) => {
         <>
             <Section title="Galeria" background="black">
                 <Items >
-                    {moka.map((media, index) => (
+                    {items.map((media, index) => (
                         <Item key={media.url}
                             onClick={() => {
                                 setModal({

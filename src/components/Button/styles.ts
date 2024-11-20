@@ -12,7 +12,6 @@ export const ButtonContainer = styled.button<Props>`
     font-size: 16px;
 `
 
-
 export const ButtonLink = styled(Link)`
     padding: 8px 16px;
     font-weight: bold;

@@ -16,7 +16,9 @@ const Banner = () => {
 
     if (!game) {
         return (
-            <h3>Carregando...</h3>
+            <div className="container">
+                <h3>Carregando...</h3>
+            </div>
         )
     }
 
@@ -34,7 +36,7 @@ const Banner = () => {
                 <div>
                     <Button
                         type="link"
-                        to="/produto"
+                        to={`product/${game.id}`}
                         title="Clique aqui para aproveitar essa orfeta"
                     >
                         Aproveitar
