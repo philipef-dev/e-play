@@ -30,8 +30,6 @@ export type Game = {
         cover: string,
         gallery: GalleryItem[]
     }
-
-
 }
 
 const Home = () => {
