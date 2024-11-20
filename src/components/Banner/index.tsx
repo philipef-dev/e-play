@@ -5,7 +5,7 @@ import { formatPrice } from '../../helpers/formatPrice'
 import { useGetGameDestaqueQuery } from "../../services/api"
 
 const Banner = () => {
-    const {data: game } = useGetGameDestaqueQuery('destaque')
+    const {data: game} = useGetGameDestaqueQuery('destaque')
 
     if(!game) {
         return (
