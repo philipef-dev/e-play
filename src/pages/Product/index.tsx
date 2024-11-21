@@ -9,7 +9,6 @@ const Product = () => {
 
     const {data: game} = useGetProductQuery(`${id}`)
 
-
     if (!game) {
         return (
             <div className='container'>
