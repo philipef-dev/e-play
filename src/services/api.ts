@@ -28,8 +28,12 @@ export const api = createApi({
         }),
         getRpgGames: builder.query<Game[], void>({
             query: () => 'rpg'
+        }),
+        getProduct: builder.query<Game, string>({
+            query: (id) => `jogos/${id}`
+
         })
     })
 })
 
-export const { useGetGameDestaqueQuery, useGetOnSaleQuery, useGetSoonQuery, useGetActionGamesQuery, useGetSportGamesQuery, useGetSimulationGamesQuery, useGetFightGamesQuery, useGetRpgGamesQuery } = api
+export const { useGetGameDestaqueQuery, useGetOnSaleQuery, useGetSoonQuery, useGetActionGamesQuery, useGetSportGamesQuery, useGetSimulationGamesQuery, useGetFightGamesQuery, useGetRpgGamesQuery, useGetProductQuery } = api
