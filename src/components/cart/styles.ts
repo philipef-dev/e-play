@@ -40,8 +40,8 @@ export const CartItem = styled.li`
     display: flex;
     font-weight: 700;
     border-bottom: 1px solid #686868;
-    position: relative;
     margin-bottom: 32px;
+    position: relative;
 
     img {
         width: 80px;
