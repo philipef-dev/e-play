@@ -34,7 +34,7 @@ export const LinksItem = styled.li`
     font-weight: 700;
 `
 
-export const LinkCart = styled.a`
+export const CartButton = styled.a`
     display: flex;
 
     img {

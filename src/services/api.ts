@@ -31,7 +31,6 @@ export const api = createApi({
         }),
         getProduct: builder.query<Game, string>({
             query: (id) => `jogos/${id}`
-
         })
     })
 })

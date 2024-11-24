@@ -9,7 +9,6 @@ type Props = {
 }
 
 const Hero = ({ game }: Props) => {
-
     return (
         <BannerHero style={{ backgroundImage: `url(${game.media.cover})` }}>
             <div className='container'>
@@ -31,7 +30,6 @@ const Hero = ({ game }: Props) => {
             </div>
         </BannerHero>
     )
-
 }
 
 export default Hero
