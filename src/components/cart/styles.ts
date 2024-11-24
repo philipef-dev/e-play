@@ -12,6 +12,11 @@ export const CartContainer = styled.div`
     justify-content: end;
     display: flex;
     z-index: 1;
+    display: none;
+
+    &.is-open {
+        display: flex;
+    }
 
     ${ButtonContainer} {
         width: 100%;

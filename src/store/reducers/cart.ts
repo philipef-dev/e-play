@@ -3,10 +3,12 @@ import { Game } from '../../pages/Home'
 
 type CartState = {
     items: Game[]
+    isOpen: boolean
 }
 
 const initialState: CartState = {
-    items: []
+    items: [],
+    isOpen: false
 }
 
 const cartSlice = createSlice({
@@ -15,8 +17,14 @@ const cartSlice = createSlice({
     reducers: {
         add: (state, action: PayloadAction<Game>) => {
             state.items.push(action.payload)
+        },
+        open: (state) => {
+            state.isOpen = true
+        },
+        close: (state) => {
+            state.isOpen = false
         }
-    }
+     }
 })
 
 export const { add } = cartSlice.actions
