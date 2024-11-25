@@ -6,12 +6,13 @@ export type Props = {
     to?: string;
     onClick?: () => void;
     children: string;
+    // disabled: boolean;
 }
 
 const Button = ({ children, title, type, to, onClick }: Props) => {
     if (type === 'button') {
         return (
-            <ButtonContainer type="button" title={title} onClick={onClick}>
+            <ButtonContainer type="button" title={title} onClick={onClick} >
                 {children}
             </ButtonContainer>
         )

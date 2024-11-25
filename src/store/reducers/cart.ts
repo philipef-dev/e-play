@@ -4,11 +4,13 @@ import { Game } from '../../pages/Home'
 type CartState = {
     items: Game[]
     isOpen: boolean
+    isDisabled: boolean
 }
 
 const initialState: CartState = {
     items: [],
-    isOpen: false
+    isOpen: false,
+    isDisabled: false
 }
 
 const cartSlice = createSlice({

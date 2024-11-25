@@ -10,6 +10,11 @@ export const ButtonContainer = styled.button<Props>`
     border-radius: 8px;
     color: var(--white);
     font-size: 16px;
+    cursor: pointer;
+
+    &.hover {
+        background: red;
+    }
 `
 
 export const ButtonLink = styled(Link)`
