@@ -7,7 +7,7 @@ import { useGetProductQuery } from '../../services/api';
 const Product = () => {
     const { id } = useParams();
 
-    const {data: game} = useGetProductQuery(`${id}`)
+    const { data: game } = useGetProductQuery(`${id}`)
 
     if (!game) {
         return (
@@ -28,7 +28,10 @@ const Product = () => {
 
             <Section title='Mais detalhes' background='gray'>
                 <p>
-                    <b>Plataforma:</b> {game.details.system} <br /> <b>Desenvolvedor:</b> {game.details.developer} <br /> <b>Editora:</b>  {game.details.publisher} <br /> <b> Idiomas:</b> O jogo oferece suporte a diversos idiomas, incluindo {game.details.languages.join(', ')}, entre outros. As opções de áudio e legendas podem ser ajustadas nas configurações do jogo.
+                    <b>Plataforma:</b> {game.details.system} <br />
+                    <b>Desenvolvedor:</b> {game.details.developer} <br />
+                    <b>Editora:</b>  {game.details.publisher} <br />
+                    <b> Idiomas:</b> O jogo oferece suporte a diversos idiomas, incluindo {game.details.languages.join(', ')}, entre outros. As opções de áudio e legendas podem ser ajustadas nas configurações do jogo.
                 </p>
             </Section>
 

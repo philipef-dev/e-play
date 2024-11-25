@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { HashLink } from 'react-router-hash-link';
 
 export const FooterSection = styled.section`
     font-size: 14px;
@@ -29,10 +30,19 @@ export const FooterTitulo = styled.h3`
     color: var(--white);
 `
 
-export const FooterItens = styled.ul`
+export const Links = styled.ul`
     display: flex;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 400;
     gap: 8px;
-    margin-bottom: 64px;    
+    margin-bottom: 64px;
+`
+
+export const Link = styled(HashLink)`
+    color: var(--gray);
+    text-decoration: none;
+    margin-bottom: 64px;        
 `
 
 

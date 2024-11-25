@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BreakPoints } from "../../styles/global";
 
 export const HeaderBar = styled.div`
     background-color: var(--gray);
@@ -21,6 +22,10 @@ export const HeaderBar = styled.div`
          display: flex;
          align-items: center;
     }
+
+    @media (max-width: ${BreakPoints.tablet}) {
+        /* display: none ; */
+    }
 `
 
 export const Links = styled.ul`   
@@ -42,4 +47,4 @@ export const CartButton = styled.a`
     }
 `
 
-    
+

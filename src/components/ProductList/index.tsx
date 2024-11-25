@@ -6,10 +6,11 @@ import { Container, List, Titulo } from "./styles"
 export type Props = {
     title: string;
     background: 'gray' | 'black';
-    games: Game[]
+    games: Game[];
+    id?: string
 }
 
-const ProductsList = ({ title, background, games }: Props) => {
+const ProductsList = ({ title, background, games, id }: Props) => {
     const getGameTags = (games: Game) => {
         const tags = []
 
@@ -28,7 +29,7 @@ const ProductsList = ({ title, background, games }: Props) => {
         return tags
     }
     return (
-        <Container background={background}>
+        <Container id={id} background={background}>
             <div className="container">
                 <Titulo>{title}</Titulo>
                 <List>
@@ -48,8 +49,6 @@ const ProductsList = ({ title, background, games }: Props) => {
                 </List>
             </div>
         </Container>
-
-
     )
 }
 

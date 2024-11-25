@@ -26,15 +26,15 @@ const Header = () => {
                             <Link to='/categories'>Categorias</Link>
                         </LinksItem>
                         <LinksItem>
-                            <a href="#">Novidades</a>
+                            <a href="novidades">Novidades</a>
                         </LinksItem>
                         <LinksItem>
-                            <a href='#'>Promoções</a>
+                            <a href="promocoes">Promoções</a>
                         </LinksItem>
                     </Links>
                 </nav>
             </div>
-            <CartButton onClick={openCart} href="#">
+            <CartButton onClick={openCart}>
                 {items.length} - produtos(s) <img src={carrinhoIcon} alt="iconeCarrinho" />
             </CartButton>
         </HeaderBar>

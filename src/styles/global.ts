@@ -1,5 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
+export const BreakPoints = {
+    desktop: '1024px',
+    tablet: '768px'
+}
+
 export const GlobalStyle = createGlobalStyle`
     :root {
         --white: #EEE;
@@ -20,12 +25,16 @@ export const GlobalStyle = createGlobalStyle`
     body {
         background-color: var(--black);
         color: var(--white)
-    }
+    }   
 
     .container {
         max-width: 1024px;
         width: 100%;
         margin: 0 auto;
         padding-top: 40px;
+
+        @media (max-width: ${BreakPoints.desktop}) {
+            max-width: 80%;            
+        }
     }
 `
