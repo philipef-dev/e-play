@@ -26,10 +26,10 @@ const Header = () => {
                             <Link to='/categories'>Categorias</Link>
                         </LinksItem>
                         <LinksItem>
-                            <a href="novidades">Novidades</a>
+                            <a href="#">Novidades</a>
                         </LinksItem>
                         <LinksItem>
-                            <a href="promocoes">Promoções</a>
+                            <a href="#">Promoções</a>
                         </LinksItem>
                     </Links>
                 </nav>
