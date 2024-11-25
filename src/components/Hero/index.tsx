@@ -43,7 +43,9 @@ const Hero = ({ game }: Props) => {
                                 onClick={addCart}
                             >
                                 Adicionar ao carrinho
-                            </Button></>) : (' Em lançamento...')
+                            </Button>
+                        </>
+                    ) : (' Em lançamento...')
                     }
                 </Info>
             </div>
