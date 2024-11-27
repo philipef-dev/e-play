@@ -1,3 +1,4 @@
+import Button from '../../components/Button'
 import Card from '../../components/Card'
 import { InputGroup, Row } from './styles'
 
@@ -40,6 +41,14 @@ const Checkout = () => (
                 </p>
             </div>
         </Card>
+
+        <Button
+            type='button'
+            title='Botão de finalizar compra'
+        >
+            Finalizar compra
+        </Button>
+
     </div>
 )
 
