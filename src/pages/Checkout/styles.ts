@@ -1,12 +1,23 @@
 import styled from "styled-components";
 
+type btnPagamentoProps = {
+    type: string
+    isActive: boolean
+}
+
+type inputGroupProps = {
+    maxWidth?: string
+}
+
 export const Row = styled.div`
     display: flex;
     column-gap: 24px;
 `
 
-export const InputGroup = styled.div`   
+export const InputGroup = styled.div<inputGroupProps>`   
     flex: auto;
+
+    max-width: ${props => props.maxWidth || 'auto'};
     
     label {
         font-size: 14px;
@@ -24,4 +35,19 @@ export const InputGroup = styled.div`
     }    
 `
 
+export const BtnPagamento = styled.button<btnPagamentoProps>`
+    background-color: ${(props) => props.isActive ? 'var(--green)' : 'var(--black)'};
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+
+    img {
+        margin-right: 8px;
+    }
+`
 
