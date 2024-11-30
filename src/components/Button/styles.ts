@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Props} from '.' 
+import { Props } from '.'
 
 export const ButtonContainer = styled.button<Props>`
     padding: 8px 16px;
     font-weight: bold;
     border: none; 
-    background: ${({ type }) => (type === 'button' ? 'var(--green)' : 'transparent')};
+    background: ${({ type }) => (type === 'button' || type === 'submit' ? 'var(--green)' : 'transparent')};
     border-radius: 8px;
     color: var(--white);
     font-size: 16px;

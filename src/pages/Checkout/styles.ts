@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 type btnPagamentoProps = {
     type: string
-    isActive: boolean
+    isactive: boolean
 }
 
 type inputGroupProps = {
@@ -32,11 +32,15 @@ export const InputGroup = styled.div<inputGroupProps>`
         height: 32px;
         border: 1px solid var(--white);
         width: 100%;
-    }    
+    }   
+    
+    small {
+        color: red;
+    }
 `
 
 export const BtnPagamento = styled.button<btnPagamentoProps>`
-    background-color: ${(props) => props.isActive ? 'var(--green)' : 'var(--black)'};
+    background-color: ${(props) => props.isactive ? 'var(--green)' : 'var(--black)'};
     color: var(--white);
     font-size: 14px;
     font-weight: 700;
@@ -51,3 +55,14 @@ export const BtnPagamento = styled.button<btnPagamentoProps>`
     }
 `
 
+export const Installment = styled.div`
+    p {
+        margin-bottom: 8px;
+    }
+
+    select {
+        padding: 8px
+    }
+
+
+`
