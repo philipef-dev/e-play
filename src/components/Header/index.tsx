@@ -2,7 +2,7 @@ import { HeaderBar, CartButton, Links, LinksItem } from './styles'
 import logoEplay from '../../assets/images/logo.svg'
 import carrinhoIcon from '../../assets/images/carrinho.svg'
 import { Link } from 'react-router-dom'
-import { open } from '../../store/reducers/cart'
+import { openCart } from '../../store/reducers/cart'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 
@@ -10,8 +10,8 @@ const Header = () => {
     const { items } = useSelector((state: RootReducer) => state.cart)
     const dispatch = useDispatch()
 
-    const openCart = () => {
-        dispatch(open())
+    const openSider = () => {
+        dispatch(openCart())
     }   
 
     return (
@@ -34,7 +34,7 @@ const Header = () => {
                     </Links>
                 </nav>
             </div>
-            <CartButton onClick={openCart}>
+            <CartButton onClick={openSider}>
                 {items.length} - produtos(s) <img src={carrinhoIcon} alt="iconeCarrinho" />
             </CartButton>
         </HeaderBar>

@@ -34,8 +34,8 @@ export const InputGroup = styled.div<inputGroupProps>`
         width: 100%;
     }   
     
-    small {
-        color: red;
+    .hasError {
+        border: 2px solid red;
     }
 `
 

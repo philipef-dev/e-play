@@ -33,14 +33,14 @@ const cartSlice = createSlice({
            state.items = state.items.filter((item) => item.id !== action.payload )
         },  
 
-        open: (state) => {
+        openCart: (state) => {
             state.isOpen = true
         },
-        close: (state) => {
+        closeCart: (state) => {
             state.isOpen = false
         }
     }
 })
 
-export const { add, remove, open, close } = cartSlice.actions
+export const { add, remove, openCart, closeCart } = cartSlice.actions
 export default cartSlice.reducer

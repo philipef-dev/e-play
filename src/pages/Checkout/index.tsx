@@ -6,9 +6,11 @@ import cardIcon from '../../assets/images/cardIcon.png'
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { usePurchaseMutation } from '../../services/api'
 
 const Checkout = () => {
-    const [payWithCard, setpayWithCard] = useState(false)
+    const [payWithCard, setPayWithCard] = useState(false)
+    const [purchase] = usePurchaseMutation()
 
     const form = useFormik({
         initialValues: {
@@ -19,7 +21,7 @@ const Checkout = () => {
             confirmDeliveryEmail: '',
             cardHolderName: '',
             cpfHolderCard: '',
-            nameOwnerCard: '',
+            nameCard: '',
             numberCard: '',
             dueMonth: '',
             expiryYear: '',
@@ -28,63 +30,111 @@ const Checkout = () => {
         },
         validationSchema: Yup.object({
             fullName: Yup.string()
-                .min(5, 'O campo requer mais do que 5 caracteres')
-                .required('Campo obrigatório'),
+                .min(5, 'O campo precisa ter pelo menos 5 caracteres')
+                .required('O campo é obrigatório'),
             email: Yup.string()
-                .email('Digite um e-mail válido')
-                .required('Campo obrigatório'),
+                .min(5, 'O campo precisa ter pelo menos 5 caracteres')
+                .required('O campo é obrigatório'),
             cpf: Yup.string()
-                .matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, 'CPF inválido')
-                .required('Campo obrigatório'),
+                .min(11, 'O campo precisa ter pelo menos 11 caracteres')
+                .max(11, 'O campo precisa ter um máximo de 11 caracteres ')
+                .required('O campo é obrigatório'),
             deliveryEmail: Yup.string()
-                .email('Digite um e-mail válido')
-                .required('Campo obrigatório'),
+                .min(5, 'O campo precisa ter pelo menos 5 caracteres')
+                .required('O campo é obrigatório'),
             confirmDeliveryEmail: Yup.string()
-                .oneOf([Yup.ref('deliveryEmail')], 'Os e-mails não coincidem')
-                .required('Campo obrigatório'),
-            cardHolderName: Yup.string()
-                .min(5, 'O campo requer mais do que 5 caracteres')
-                .required('Campo obrigatório'),
-            cpfHolderCard: Yup.string()
-                .matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, 'CPF inválido')
-                .required('Campo obrigatório'),
-            nameOwnerCard: Yup.string()
-                .required('Campo obrigatório'),
-            numberCard: Yup.string()
-                .matches(/^\d{13,16}$/, 'Número do cartão inválido')
-                .required('Campo obrigatório'),
-            dueMonth: Yup.number()
-                .min(1, 'Mês inválido')
-                .max(12, 'Mês inválido')
-                .required('Campo obrigatório'),
-            expiryYear: Yup.number()
-                .min(new Date().getFullYear(), 'Ano inválido')
-                .required('Campo obrigatório'),
-            codeCard: Yup.string()
-                .matches(/^\d{3,4}$/, 'CVV inválido')
-                .required('Campo obrigatório'),
-            installment: Yup.number()
-                .positive('Número de parcelas inválido')
-                .required('Campo obrigatório')
+                .oneOf([Yup.ref('deliveryEmail')], 'Os e-mails são diferentes')
+                .required('O campo é obrigatório'),
+            cardHolderName: Yup.string().when('payWithCard', {
+                is: true,
+                then: (schema) => schema.required('O campo é obrigatório'),
+                otherwise: (schema) => schema.required()
+            }),
+            cpfHolderCard: Yup.string().when('payWithCard', {
+                is: true,
+                then: (schema) => schema.required('O campo é obrigatório'),
+                otherwise: (schema) => schema.required()
+            }),
+            nameCard: Yup.string().when('payWithCard', {
+                is: true,
+                then: (schema) => schema.required('O campo é obrigatório'),
+                otherwise: (schema) => schema.required()
+            }),
+            numberCard: Yup.string().when('payWithCard', {
+                is: true,
+                then: (schema) => schema.required('O campo é obrigatório'),
+                otherwise: (schema) => schema.required()
+            }),
+            dueMonth: Yup.string().when('payWithCard', {
+                is: true,
+                then: (schema) => schema.required('O campo é obrigatório'),
+                otherwise: (schema) => schema.required()
+            }),
+            expiryYear: Yup.string().when('payWithCard', {
+                is: true,
+                then: (schema) => schema.required('O campo é obrigatório'),
+                otherwise: (schema) => schema.required()
+            }),
+            codeCard: Yup.string().when('payWithCard', {
+                is: true,
+                then: (schema) => schema.required('O campo é obrigatório'),
+                otherwise: (schema) => schema.required()
+            }),
         }),
-
-        onSubmit: (value) => {
-            console.log(value)
+        onSubmit: (values) => {
+            console.log('onSubmit foi chamado', values)
+            alert('OnSubmit funcionando')
+            purchase({
+                billing: {
+                    name: values.fullName,
+                    email: values.email,
+                    document: values.cpf
+                },
+                delivery: {
+                    email: values.deliveryEmail
+                },
+                payment: {
+                    installments: 1,
+                    card: {
+                        active: payWithCard,
+                        code: Number(values.codeCard),
+                        name: values.nameCard,
+                        number: values.numberCard,
+                        owner: {
+                            name: values.cardHolderName,
+                            document: values.cpfHolderCard
+                        },
+                        expires: {
+                            month: 1,
+                            year: 2025
+                        },
+                    },
+                },
+                products: [
+                    {
+                        id: 1,
+                        price: 10
+                    }
+                ]
+            }).then((response) => {
+                console.log("Resposta da API:", response);
+                alert('Compra realizada com sucesso');
+            }).catch((error) => {
+                console.error("Erro na API", error);
+                alert('Ocorreu um erro ao processar a compra');
+            });
         }
-    })
+    })    
 
-    console.log(form)
+    const checkInputHasError = (fieldName: string) => {
+        const isTouched = fieldName in form.touched
+        const isValid = fieldName in form.errors
 
-    const getErrorMessage = (fieldName: string, message?: string) => {
-        const estaAlterado = fieldName in form.touched
-        const estaInvalido = fieldName in form.errors
+        const hasError = isTouched && isValid
 
-        if (estaAlterado && estaInvalido) return message
-        return ''
+        return hasError
     }
 
-    console.log('O que o campo form é', typeof form)
-    
     return (
         <form className='container' onSubmit={form.handleSubmit}>
             <Card title="Dados de entrega" >
@@ -99,22 +149,23 @@ const Checkout = () => {
                                 value={form.values.fullName}
                                 onChange={form.handleChange}
                                 onBlur={form.handleBlur}
+                                className={checkInputHasError('fullName') ? 'hasError' : ''}
                             />
-                            <small>{getErrorMessage('fullName', form.errors.fullName)}</small>
-
                         </InputGroup>
+
                         <InputGroup>
                             <label htmlFor="email">E-mail</label>
                             <input
-                                type="text"
+                                type="email"
                                 id="email"
                                 name="email"
                                 value={form.values.email}
                                 onChange={form.handleChange}
                                 onBlur={form.handleBlur}
+                                className={checkInputHasError('email') ? 'hasError' : ''}
                             />
-                            <small>{getErrorMessage('fullName', form.errors.email)}</small>
                         </InputGroup>
+
                         <InputGroup>
                             <label htmlFor="cpf">CPF</label>
                             <input
@@ -124,8 +175,8 @@ const Checkout = () => {
                                 value={form.values.cpf}
                                 onChange={form.handleChange}
                                 onBlur={form.handleBlur}
+                                className={checkInputHasError('cpf') ? 'hasError' : ''}
                             />
-                            <small>{getErrorMessage('fullName', form.errors.cpf)}</small>
                         </InputGroup>
                     </Row>
 
@@ -141,12 +192,12 @@ const Checkout = () => {
                                 value={form.values.deliveryEmail}
                                 onChange={form.handleChange}
                                 onBlur={form.handleBlur}
+                                className={checkInputHasError('deliveryEmail') ? 'hasError' : ''}
                             />
-                            <small>{getErrorMessage('fullName', form.errors.deliveryEmail)}</small>
                         </InputGroup>
 
                         <InputGroup>
-                            <label htmlFor="confirmDeliveryEmail"> Confirme o e-mail</label>
+                            <label htmlFor="confirmDeliveryEmail">Confirme o e-mail</label>
                             <input
                                 type="email"
                                 id="confirmDeliveryEmail"
@@ -154,8 +205,8 @@ const Checkout = () => {
                                 value={form.values.confirmDeliveryEmail}
                                 onChange={form.handleChange}
                                 onBlur={form.handleBlur}
+                                className={checkInputHasError('confirmDeliveryEmail') ? 'hasError' : ''}
                             />
-                            <small>{getErrorMessage('fullName', form.errors.confirmDeliveryEmail)}</small>
                         </InputGroup>
                     </Row>
                 </>
@@ -167,7 +218,7 @@ const Checkout = () => {
                         <BtnPagamento
                             type='button'
                             isactive={!payWithCard}
-                            onClick={() => setpayWithCard(false)}
+                            onClick={() => setPayWithCard(false)}
                         >
                             <img src={boletoIcon} />
                             Boleto bancário
@@ -175,7 +226,7 @@ const Checkout = () => {
                         <BtnPagamento
                             type='button'
                             isactive={payWithCard}
-                            onClick={() => setpayWithCard(true)}
+                            onClick={() => setPayWithCard(true)}
                         >
                             <img src={cardIcon} />
                             Cartão de crédito
@@ -194,8 +245,8 @@ const Checkout = () => {
                                         value={form.values.cardHolderName}
                                         onChange={form.handleChange}
                                         onBlur={form.handleBlur}
+                                        className={checkInputHasError('cardHolderName') ? 'hasError' : ''}
                                     />
-                                    <small>{getErrorMessage('fullName', form.errors.cardHolderName)}</small>
                                 </InputGroup>
 
                                 <InputGroup>
@@ -207,92 +258,95 @@ const Checkout = () => {
                                         value={form.values.cpfHolderCard}
                                         onChange={form.handleChange}
                                         onBlur={form.handleBlur}
+                                        className={checkInputHasError('cpfHolderCard') ? 'hasError' : ''}
                                     />
-                                    <small>{getErrorMessage('fullName', form.errors.cardHolderName)}</small>
                                 </InputGroup>
                             </Row>
 
                             <div className='margin'>
                                 <Row>
                                     <InputGroup>
-                                        <label htmlFor='nameOwnerCard'>Nome no cartão</label>
+                                        <label htmlFor='nameCard'>Nome no cartão XXX</label>
                                         <input
                                             type="text"
-                                            id='nameOwnerCard'
-                                            name="nameOwnerCard"
-                                            value={form.values.nameOwnerCard}
+                                            id='nameCard'
+                                            name="nameCard"
+                                            value={form.values.nameCard}
                                             onChange={form.handleChange}
                                             onBlur={form.handleBlur}
+                                            className={checkInputHasError('nameCard') ? 'hasError' : ''}
                                         />
-                                        <small>{getErrorMessage('fullName', form.errors.nameOwnerCard)}</small>
                                     </InputGroup>
 
                                     <InputGroup>
                                         <label htmlFor='numberCard'>Número do cartão</label>
                                         <input
-                                            type="number"
+                                            type="string"
                                             id='numberCard'
                                             name="numberCard"
                                             value={form.values.numberCard}
                                             onChange={form.handleChange}
                                             onBlur={form.handleBlur}
+                                            className={checkInputHasError('numberCard') ? 'hasError' : ''}
                                         />
-                                        <small>{getErrorMessage('fullName', form.errors.numberCard)}</small>
                                     </InputGroup>
 
                                     <InputGroup maxWidth='123px'>
                                         <label htmlFor='dueMonth'>Mês do vencimento</label>
                                         <input
-                                            type="text"
+                                            type="number"
                                             id='dueMonth'
                                             name="dueMonth"
                                             value={form.values.dueMonth}
                                             onChange={form.handleChange}
                                             onBlur={form.handleBlur}
+                                            className={checkInputHasError('dueMonth') ? 'hasError' : ''}
                                         />
-                                        <small>{getErrorMessage('fullName', form.errors.dueMonth)}</small>
                                     </InputGroup>
 
                                     <InputGroup maxWidth='123px'>
                                         <label htmlFor='expiryYear'>Ano de vencimento</label>
                                         <input
-                                            type="text"
+                                            type="number"
                                             id='expiryYear'
                                             name="expiryYear"
                                             value={form.values.expiryYear}
                                             onChange={form.handleChange}
                                             onBlur={form.handleBlur}
+                                            className={checkInputHasError('expiryYear') ? 'hasError' : ''}
                                         />
                                     </InputGroup>
 
                                     <InputGroup maxWidth='48px'>
                                         <label htmlFor='codeCard'>CVV</label>
                                         <input
-                                            type="text"
+                                            type="number"
                                             id='codeCard'
                                             name='codeCard'
                                             value={form.values.codeCard}
                                             onChange={form.handleChange}
                                             onBlur={form.handleBlur}
+                                            className={checkInputHasError('codeCard') ? 'hasError' : ''}
+
                                         />
-                                        <small>{getErrorMessage('fullName', form.errors.codeCard)}</small>
                                     </InputGroup>
                                 </Row>
                                 <Row className='margin'>
                                     <Installment>
-                                        <p>Parcelamento</p>
+                                        <label htmlFor="installment">Parcelamento</label>
                                         <select
                                             name="installment"
                                             id="installment"
                                             value={form.values.installment}
                                             onChange={form.handleChange}
                                             onBlur={form.handleBlur}
+                                            className={checkInputHasError('installment') ? 'hasError' : ''}
+
                                         >
                                             <option>1x de R$ 200,00</option>
                                             <option>2x de R$ 200,00</option>
                                             <option>3x de R$ 200,00</option>
                                         </select>
-                                        <small>{getErrorMessage('fullName', form.errors.installment)}</small>
                                     </Installment>
                                 </Row>
                             </div>

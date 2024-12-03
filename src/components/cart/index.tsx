@@ -3,7 +3,7 @@ import Tag from "../Tag"
 import { ButtonContainer } from "../Button/styles"
 import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
-import { close, remove } from "../../store/reducers/cart"
+import {  remove, closeCart } from "../../store/reducers/cart"
 import { formatPrice } from "../../helpers/formatPrice"
 
 const Cart = () => {
@@ -11,8 +11,8 @@ const Cart = () => {
 
     const dispatch = useDispatch()
 
-    const closeCart = () => {
-        dispatch(close())
+    const closeSideBar = () => {
+        dispatch(closeCart())
     }
 
     const removeItem = (id: number) => {
@@ -27,7 +27,7 @@ const Cart = () => {
 
     return (
         <CartContainer className={isOpen ? 'is-open' : ''}>
-            <Overlay onClick={closeCart} />
+            <Overlay onClick={closeSideBar} />
             <SideBar>
                 <ul>
                     {items.map((item) => {

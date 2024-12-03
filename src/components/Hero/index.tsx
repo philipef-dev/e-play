@@ -3,7 +3,7 @@ import Button from '../Button';
 import Tag from '../Tag';
 import { BannerHero, Info } from "./styles";
 import { useDispatch } from 'react-redux';
-import { add, open } from '../../store/reducers/cart';
+import { add, openCart } from '../../store/reducers/cart';
 import { formatPrice } from '../../helpers/formatPrice';
 
 type Props = {
@@ -16,7 +16,7 @@ const Hero = ({ game }: Props) => {
 
     const addCart = () => {
         dispatch(add(game))
-        dispatch(open())
+        dispatch(openCart())
     }
 
     const hasPrice = game.prices.old! > 0
