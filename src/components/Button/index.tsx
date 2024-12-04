@@ -6,7 +6,7 @@ export type Props = {
     to?: string;
     onClick?: () => void;
     children: string;
-    disable?: boolean
+    disabled?: boolean
 }
 
 const Button = ({ children, title, type, to, onClick }: Props) => {

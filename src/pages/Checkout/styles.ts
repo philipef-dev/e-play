@@ -26,7 +26,8 @@ export const InputGroup = styled.div<inputGroupProps>`
         display: block;
     }
 
-    input {
+    input,
+    select {
         padding: 0 8px;
         background: var(--white);
         height: 32px;
@@ -53,16 +54,4 @@ export const BtnPagamento = styled.button<btnPagamentoProps>`
     img {
         margin-right: 8px;
     }
-`
-
-export const Installment = styled.div`
-    p {
-        margin-bottom: 8px;
-    }
-
-    select {
-        padding: 8px
-    }
-
-
 `

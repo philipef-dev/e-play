@@ -1,13 +1,19 @@
 import { SideBar, CartContainer, CartItem, Overlay, Quantity, Amount } from "./styles"
 import Tag from "../Tag"
-import { ButtonContainer } from "../Button/styles"
 import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
-import {  remove, closeCart } from "../../store/reducers/cart"
+import { remove, closeCart } from "../../store/reducers/cart"
 import { formatPrice } from "../../helpers/formatPrice"
+import { useNavigate } from "react-router-dom"
 
 const Cart = () => {
     const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+
+    const hasItems = items.length === 0
+
+    console.log('Verifica a quantidade de items no array', hasItems)
+
+    const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
@@ -21,8 +27,14 @@ const Cart = () => {
 
     const getTotalPrice = () => {
         return items.reduce((acumulador, valorAtual) => {
-            return (acumulador += valorAtual.prices.current!)
+            if (valorAtual.prices.current) {
+                return (acumulador += valorAtual.prices.current)
+            } return 0
         }, 0)
+    }
+
+    const goToCheckout = () => {
+        navigate('/checkout')
     }
 
     return (
@@ -40,7 +52,7 @@ const Cart = () => {
                                     <Tag size="small">{item.details.system}</Tag>
                                     <span>{formatPrice(item.prices.current)}</span>
                                 </div>
-                                <button
+                                <button className="deleteItem"
                                     type="button"
                                     onClick={() => removeItem(item.id)}
                                 />
@@ -52,11 +64,15 @@ const Cart = () => {
                 <Amount>Total de {formatPrice(getTotalPrice())} <br />
                     <span> em até 6x sem juros</span>
                 </Amount>
-                <ButtonContainer
+                <button
+                    className="btnBuy"
                     title="Botão de comprar"
-                    type="button">
+                    onClick={goToCheckout}
+                    type="button"
+                    disabled={hasItems}
+                >
                     Continuar com a compra
-                </ButtonContainer>
+                </button>
             </SideBar>
         </CartContainer>
     )

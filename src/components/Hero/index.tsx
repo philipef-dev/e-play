@@ -19,7 +19,7 @@ const Hero = ({ game }: Props) => {
         dispatch(openCart())
     }
 
-    const hasPrice = game.prices.old! > 0
+    // const hasPrice = game.prices.old! > 0
 
     return (
         <BannerHero style={{ backgroundImage: `url(${game.media.cover})` }}>
@@ -30,9 +30,8 @@ const Hero = ({ game }: Props) => {
                 </div>
 
                 <Info>
-                    <h2>{game.name}</h2>
-                    {hasPrice ? (
-                        <>
+                    <h2>{game.name}</h2>            
+                        
                             <p>
                                 <span>De {formatPrice(game.prices.old)}</span> Por {formatPrice(game.prices.discount)}
                             </p>
@@ -44,9 +43,7 @@ const Hero = ({ game }: Props) => {
                             >
                                 Adicionar ao carrinho
                             </Button>
-                        </>
-                    ) : (' Em lançamento...')
-                    }
+                    
                 </Info>
             </div>
         </BannerHero>

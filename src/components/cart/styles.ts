@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { TagContainer } from "../Tag/styles";
 import closeIcon from '../../assets/images/closeIcon.svg'
-import { ButtonContainer } from "../Button/styles";
 
 export const CartContainer = styled.div`
     top: 0;
@@ -18,9 +17,29 @@ export const CartContainer = styled.div`
         display: flex;
     }
 
-    ${ButtonContainer} {
+    .btnBuy {
         width: 100%;
-        margin-top: 24px
+        margin-top: 24px;
+        padding: 8px 16px;
+        font-weight: bold;
+        border: none; 
+        background-color: var(--green);
+        border-radius: 8px;
+        color: var(--white);
+        font-size: 16px;
+        cursor: pointer;
+        
+        &:disabled {
+        cursor: not-allowed;
+        background-color: gray; 
+        color: var(--gray-light); 
+        opacity: 0.6;     
+        pointer-events: none;    
+        }
+
+        &:hover {
+            background: #059669;
+        }  
     }
 `
 
@@ -30,7 +49,7 @@ export const Overlay = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0, 0.73);   
+    background-color: rgba(0, 0, 0, 0.73);
 `
 
 export const SideBar = styled.aside`
@@ -72,14 +91,14 @@ export const CartItem = styled.li`
         margin-bottom: 16px;
     }
 
-    button {
+    .deleteItem {
         background-image: url(${closeIcon});
         width: 16px;
         height: 16px;
         background-color: transparent;
         border: none;
-        right: 0;    
-        top: 0;    
+        right: 0;
+        top: 0;
         position: absolute;
         cursor: pointer;
     }
@@ -98,8 +117,8 @@ export const Amount = styled.p`
     color: var(--white);
 
     span {
-        color: #999;
-    }
+    color: #999;
+}
 `
 
 

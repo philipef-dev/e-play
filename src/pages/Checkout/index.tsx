@@ -1,6 +1,6 @@
 import Button from '../../components/Button'
 import Card from '../../components/Card'
-import { BtnPagamento, InputGroup, Installment, Row } from './styles'
+import { BtnPagamento, InputGroup, Row } from './styles'
 import boletoIcon from '../../assets/images/boletoIcon.png'
 import cardIcon from '../../assets/images/cardIcon.png'
 import { useState } from 'react'
@@ -332,9 +332,9 @@ const Checkout = () => {
                                     </InputGroup>
                                 </Row>
                                 <Row className='margin'>
-                                    <Installment>
+                                    <InputGroup maxWidth='140px'>
                                         <label htmlFor="installment">Parcelamento</label>
-                                        <select
+                                        <select 
                                             name="installment"
                                             id="installment"
                                             value={form.values.installment}
@@ -347,7 +347,7 @@ const Checkout = () => {
                                             <option>2x de R$ 200,00</option>
                                             <option>3x de R$ 200,00</option>
                                         </select>
-                                    </Installment>
+                                    </InputGroup>
                                 </Row>
                             </div>
                         </>
