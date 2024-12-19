@@ -7,7 +7,7 @@ import Footer from './components/Footer'
 
 import { GlobalStyle } from './styles/global'
 import { store } from './store'
-import Cart from './components/cart'
+import Cart from './components/Cart'
 
 function App() {
   return (

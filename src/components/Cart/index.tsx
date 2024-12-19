@@ -27,6 +27,7 @@ const Cart = () => {
 
     const getTotalPrice = () => {
         return items.reduce((acumulador, valorAtual) => {
+            console.log('Verifica o valor atual', valorAtual)
             if (valorAtual.prices.current) {
                 return (acumulador += valorAtual.prices.current)
             } return 0
@@ -34,6 +35,7 @@ const Cart = () => {
     }
 
     const goToCheckout = () => {
+        closeSideBar()
         navigate('/checkout')
     }
 
