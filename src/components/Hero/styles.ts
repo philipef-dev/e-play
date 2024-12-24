@@ -48,7 +48,7 @@ export const Info = styled.div`
         margin-bottom: 16px;
     }
 
-    span {
+    .discount {
         text-decoration: line-through;
         display: block;
     }

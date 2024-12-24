@@ -31,7 +31,7 @@ const Product = () => {
                     <b>Plataforma:</b> {game.details.system} <br />
                     <b>Desenvolvedor:</b> {game.details.developer} <br />
                     <b>Editora:</b>  {game.details.publisher} <br />
-                    <b> Idiomas:</b> O jogo oferece suporte a diversos idiomas, incluindo {game.details.languages.join(', ')}, entre outros. As opções de áudio e legendas podem ser ajustadas nas configurações do jogo.
+                    <b>Idiomas:</b> O jogo oferece suporte a diversos idiomas, incluindo {game.details.languages.join(', ')}, entre outros. As opções de áudio e legendas podem ser ajustadas nas configurações do jogo.
                 </p>
             </Section>
 

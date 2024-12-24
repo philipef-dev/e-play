@@ -19,7 +19,8 @@ const Hero = ({ game }: Props) => {
         dispatch(openCart())
     }
 
-    const hasPrice = game.prices.current === null
+    const isPriceCurrentNull = game.prices.current === null
+    const isDiscountNull = game.prices.discount === null
 
     return (
         <BannerHero style={{ backgroundImage: `url(${game.media.cover})` }}>
@@ -31,22 +32,35 @@ const Hero = ({ game }: Props) => {
 
                 <Info>
                     <h2>{game.name}</h2>
-                    {!hasPrice ? (
+                    {!isDiscountNull ? (
                         <>
                             <p>
-                                <span>De {formatPrice(game.prices.old)}</span> Por {formatPrice(game.prices.discount)}
+                                <span className='discount'>De {formatPrice(game.prices.old)}</span> Por {formatPrice(game.prices.discount)}
                             </p>
+                        </>
+                    ) : (
+                        <p>
+                            {!isPriceCurrentNull ? (
+                                <>
+                                    <p>
+                                        <span> {formatPrice(game.prices.current)} </span>
+                                    </p>
 
-                            <Button
-                                title='Botão de adicionar ao carrinho'
-                                type='button'
-                                onClick={addCart}
-                            >
-                                Adicionar ao carrinho
-                            </Button>
-                        </>) : ('Em lançamento')}
-
-
+                                </>
+                            ) : (
+                                <p> Em lançamento </p>
+                            )}
+                        </p>
+                    )}
+                    {!isPriceCurrentNull && (
+                        <Button
+                            title="Botão de adicionar ao carrinho"
+                            type="button"
+                            onClick={addCart}
+                        >
+                            Adicionar ao carrinho
+                        </Button>
+                    )}
                 </Info>
             </div>
         </BannerHero>
