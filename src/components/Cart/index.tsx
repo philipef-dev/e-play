@@ -3,7 +3,7 @@ import Tag from "../Tag"
 import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
 import { remove, closeCart } from "../../store/reducers/cart"
-import { formatPrice } from "../../helpers/formatPrice"
+import { formatPrice, getTotalPrice } from "../../helpers/formatPrice"
 import { useNavigate } from "react-router-dom"
 
 const Cart = () => {
@@ -19,15 +19,6 @@ const Cart = () => {
 
     const removeItem = (id: number) => {
         dispatch(remove(id))
-    }
-
-    const getTotalPrice = () => {
-        return items.reduce((acumulador, valorAtual) => {
-            console.log('Verifica o valor atual', valorAtual)
-            if (valorAtual.prices.current) {
-                return (acumulador += valorAtual.prices.current)
-            } return 0
-        }, 0)
     }
 
     const goToCheckout = () => {
@@ -59,7 +50,7 @@ const Cart = () => {
                     })}
                 </ul>
                 <Quantity> {items.length} jogos(s) no carrinho</Quantity>
-                <Amount>Total de {formatPrice(getTotalPrice())} <br />
+                <Amount>Total de {formatPrice(getTotalPrice(items))} <br />
                     <span> em até 6x sem juros</span>
                 </Amount>
                 <button

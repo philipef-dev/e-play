@@ -3,23 +3,50 @@ import Card from '../../components/Card'
 import { BtnPagamento, InputGroup, Row } from './styles'
 import boletoIcon from '../../assets/images/boletoIcon.png'
 import cardIcon from '../../assets/images/cardIcon.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { Navigate } from 'react-router-dom'
+import { formatPrice, getTotalPrice } from '../../helpers/formatPrice'
+
+type Installment = {
+    quantity: number
+    amount: number
+    formattedAmount: string
+}
 
 const Checkout = () => {
     const [payWithCard, setPayWithCard] = useState(false)
     const [purchase] = usePurchaseMutation()
-
     const { items } = useSelector((state: RootReducer) => state.cart)
+    const [installments, setInstallments] = useState<Installment[]>([])
 
-    if (items.length === 0) {
-        Navigate({to: '/'})
-    }
+    const totalPrice = getTotalPrice(items)
+
+
+    useEffect(() => {
+        const calculateInstallments = () => {
+            const intallmentsArray: Installment[] = []
+
+            for (let i = 1; i <= 6; i++) {
+                intallmentsArray.push({
+                    quantity: i,
+                    amount: totalPrice / i,
+                    formattedAmount: formatPrice(totalPrice / i)
+                })
+            }
+
+            return intallmentsArray
+        }
+        if (totalPrice > 0) {
+            setInstallments(calculateInstallments())
+        }
+
+    }, [totalPrice])
+
 
     const form = useFormik({
         initialValues: {
@@ -142,6 +169,10 @@ const Checkout = () => {
         const hasError = isTouched && isValid
 
         return hasError
+    }
+
+    if (items.length === 0) {
+        Navigate({ to: '/' })
     }
 
     return (
@@ -349,11 +380,13 @@ const Checkout = () => {
                                             onChange={form.handleChange}
                                             onBlur={form.handleBlur}
                                             className={checkInputHasError('installment') ? 'hasError' : ''}
-
                                         >
-                                            <option>1x de R$ 200,00</option>
-                                            <option>2x de R$ 200,00</option>
-                                            <option>3x de R$ 200,00</option>
+                                            {installments.map((installment) => (
+                                                <option key={installment.quantity}>
+                                                    {installment.quantity}x de
+                                                    {installment.formattedAmount}
+                                                </option>
+                                            ))}
                                         </select>
                                     </InputGroup>
                                 </Row>
