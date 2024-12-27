@@ -7,10 +7,19 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+import { Navigate } from 'react-router-dom'
 
 const Checkout = () => {
     const [payWithCard, setPayWithCard] = useState(false)
     const [purchase] = usePurchaseMutation()
+
+    const { items } = useSelector((state: RootReducer) => state.cart)
+
+    if (items.length === 0) {
+        Navigate({to: '/'})
+    }
 
     const form = useFormik({
         initialValues: {
@@ -124,7 +133,7 @@ const Checkout = () => {
                 alert('Ocorreu um erro ao processar a compra');
             });
         }
-    })    
+    })
 
     const checkInputHasError = (fieldName: string) => {
         const isTouched = fieldName in form.touched
@@ -327,14 +336,13 @@ const Checkout = () => {
                                             onChange={form.handleChange}
                                             onBlur={form.handleBlur}
                                             className={checkInputHasError('codeCard') ? 'hasError' : ''}
-
                                         />
                                     </InputGroup>
                                 </Row>
                                 <Row className='margin'>
                                     <InputGroup maxWidth='140px'>
                                         <label htmlFor="installment">Parcelamento</label>
-                                        <select 
+                                        <select
                                             name="installment"
                                             id="installment"
                                             value={form.values.installment}

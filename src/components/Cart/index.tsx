@@ -9,10 +9,6 @@ import { useNavigate } from "react-router-dom"
 const Cart = () => {
     const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
 
-    const hasItems = items.length === 0
-
-    console.log('Verifica a quantidade de items no array', hasItems)
-
     const navigate = useNavigate()
 
     const dispatch = useDispatch()
@@ -71,7 +67,6 @@ const Cart = () => {
                     title="Botão de comprar"
                     onClick={goToCheckout}
                     type="button"
-                    disabled={hasItems}
                 >
                     Continuar com a compra
                 </button>
