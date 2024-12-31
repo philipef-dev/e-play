@@ -1,10 +1,14 @@
-import { SideBar, CartContainer, CartItem, Overlay, Quantity, Amount } from "./styles"
+import { SideBar, CartContainer, CartItem, Overlay, Quantity, Amount, BtnCloseCart } from "./styles"
 import Tag from "../Tag"
 import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
 import { remove, closeCart } from "../../store/reducers/cart"
 import { formatPrice, getTotalPrice } from "../../helpers/formatPrice"
 import { useNavigate } from "react-router-dom"
+
+import deleteIcon from '../../assets/images/deleteIcon.png';
+import closeIcon from '../../assets/images/closeIcon.svg';
+
 
 const Cart = () => {
     const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -31,6 +35,14 @@ const Cart = () => {
             <Overlay onClick={closeSideBar} />
             <SideBar>
                 <ul>
+                    <BtnCloseCart
+                        className="closeCart"
+                        type="button"
+                        title="Fechar carrinho"
+                        onClick={closeSideBar}
+                    >
+                        <img src={closeIcon} />
+                    </BtnCloseCart >
                     {items.map((item) => {
                         return (
                             <CartItem key={item.id}>
@@ -46,7 +58,9 @@ const Cart = () => {
                                     type="button"
                                     title="Remover item"
                                     onClick={() => removeItem(item.id)}
-                                />
+                                >
+                                    <img src={deleteIcon} />
+                                </button>
                             </CartItem>
                         )
                     })}
@@ -64,7 +78,7 @@ const Cart = () => {
                     Continuar com a compra
                 </button>
             </SideBar>
-        </CartContainer>
+        </CartContainer >
     )
 }
 

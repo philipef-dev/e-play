@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TagContainer } from "../Tag/styles";
-import closeIcon from '../../assets/images/closeIcon.svg'
+import closeIcon from '../../assets/images/closeIcon.svg';
 
 export const CartContainer = styled.div`
     top: 0;
@@ -92,16 +92,31 @@ export const CartItem = styled.li`
     }
 
     .deleteItem {
-        background-image: url(${closeIcon});
+        background-color: transparent;
+        border: none;
+        right: -20px;
+        top: 60px;
+        position: absolute;
+        cursor: pointer;
+
+        img {
+            width: 18px;
+            height: 18px;
+        }
+    }    
+`
+
+export const BtnCloseCart = styled.button`
+        background-image: ${closeIcon};
+        position: absolute;
+        top: 10px;
+        right: 20px;
         width: 16px;
         height: 16px;
         background-color: transparent;
         border: none;
-        right: 0;
-        top: -20px;
-        position: absolute;
-        cursor: pointer;
-    }
+        background-size: cover;
+        color: var(--white);        
 `
 
 export const Quantity = styled.p`
