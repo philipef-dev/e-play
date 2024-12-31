@@ -9,7 +9,7 @@ export const formatPrice = (preco = 0) => {
 
 export const getTotalPrice = (items: Game[]) => {
     return items.reduce((acumulador, valorAtual) => {
-        console.log('Verifica o valor atual', valorAtual)
+        // console.log('Verifica o valor atual', valorAtual)
         if (valorAtual.prices.current) {
             return (acumulador += valorAtual.prices.current)
         } return 0

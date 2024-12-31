@@ -41,8 +41,10 @@ const Cart = () => {
                                     <Tag size="small">{item.details.system}</Tag>
                                     <span>{formatPrice(item.prices.current)}</span>
                                 </div>
-                                <button className="deleteItem"
+                                <button
+                                    className="deleteItem"
                                     type="button"
+                                    title="Remover item"
                                     onClick={() => removeItem(item.id)}
                                 />
                             </CartItem>

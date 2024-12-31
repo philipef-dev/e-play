@@ -98,7 +98,7 @@ export const CartItem = styled.li`
         background-color: transparent;
         border: none;
         right: 0;
-        top: 0;
+        top: -20px;
         position: absolute;
         cursor: pointer;
     }
