@@ -136,6 +136,3 @@ export const Amount = styled.p`
     color: #999;
 }
 `
-
-
-
