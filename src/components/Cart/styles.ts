@@ -116,6 +116,7 @@ export const BtnCloseCart = styled.button`
         background-color: transparent;
         border: none;
         background-size: cover;
+        cursor: pointer;
         color: var(--white);        
 `
 
