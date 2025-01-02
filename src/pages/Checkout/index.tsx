@@ -8,9 +8,9 @@ import Button from '../../components/Button'
 import Card from '../../components/Card'
 import { usePurchaseMutation } from '../../services/api'
 import { getTotalPrice, parseToBrl } from '../../helpers/formatPrice'
-import { BtnPagamento, InputGroup, Row } from './styles'
 import boletoIcon from '../../assets/images/boletoIcon.png'
 import cardIcon from '../../assets/images/cardIcon.png'
+import * as S from './styles'
 // import { useDispatch, useSelector } from 'react-redux'
 // import { clearCart } from '../../store/reducers/cart'
 
@@ -166,7 +166,6 @@ const Checkout = () => {
         return hasError
     }
 
-
     if (items.length === 0) {
         return <Navigate to="/" />
     }
@@ -187,16 +186,16 @@ const Checkout = () => {
                         <p>
                             Caso tenha optado pelo pagamento via boleto bancário, lembre-se de que a confirmação pode levar até 3 dias úteis.
                             Após a aprovação do pagamento, enviaremos um e-mail contendo o código de ativação do jogo. <br />
-                        </p> <br/>
+                        </p> <br />
 
                         <p>
                             Se você optou pelo pagamento com cartão de crédito, a liberação do código de ativação ocorrerá após a aprovação da transação pela operadora do cartão. Você receberá o código no e-mail cadastrado em nossa loja. <br />
-                        </p> <br/>
+                        </p> <br />
 
                         <p>
                             Pedimos que verifique sua caixa de entrada e a pasta de spam para garantir que receba nossa comunicação.
                             Caso tenha alguma dúvida ou necessite de mais informações, por favor, entre em contato conosco através dos nossos canais de atendimento ao cliente. <br />
-                        </p> <br/> 
+                        </p> <br />
 
                         <p>
                             Agradecemos por escolher a EPLAY e esperamos que desfrute do seu jogo!
@@ -207,8 +206,8 @@ const Checkout = () => {
                 <>
                     <Card title="Dados de entrega" >
                         <>
-                            <Row>
-                                <InputGroup>
+                            <S.Row>
+                                <S.InputGroup>
                                     <label htmlFor="fullName">Nome completo</label>
                                     <input
                                         type="text"
@@ -219,9 +218,9 @@ const Checkout = () => {
                                         onBlur={form.handleBlur}
                                         className={checkInputHasError('fullName') ? 'hasError' : ''}
                                     />
-                                </InputGroup>
+                                </S.InputGroup>
 
-                                <InputGroup>
+                                <S.InputGroup>
                                     <label htmlFor="email">E-mail</label>
                                     <input
                                         type="email"
@@ -232,9 +231,9 @@ const Checkout = () => {
                                         onBlur={form.handleBlur}
                                         className={checkInputHasError('email') ? 'hasError' : ''}
                                     />
-                                </InputGroup>
+                                </S.InputGroup>
 
-                                <InputGroup>
+                                <S.InputGroup>
                                     <label htmlFor="cpf">CPF</label>
                                     <input
                                         type="text"
@@ -245,13 +244,13 @@ const Checkout = () => {
                                         onBlur={form.handleBlur}
                                         className={checkInputHasError('cpf') ? 'hasError' : ''}
                                     />
-                                </InputGroup>
-                            </Row>
+                                </S.InputGroup>
+                            </S.Row>
 
                             <h3 className='margin'> Dados de entrega - conteúdo digital</h3>
 
-                            <Row>
-                                <InputGroup>
+                            <S.Row>
+                                <S.InputGroup>
                                     <label htmlFor="deliveryEmail">E-mail</label>
                                     <input
                                         type="email"
@@ -262,9 +261,9 @@ const Checkout = () => {
                                         onBlur={form.handleBlur}
                                         className={checkInputHasError('deliveryEmail') ? 'hasError' : ''}
                                     />
-                                </InputGroup>
+                                </S.InputGroup>
 
-                                <InputGroup>
+                                <S.InputGroup>
                                     <label htmlFor="confirmDeliveryEmail">Confirme o e-mail</label>
                                     <input
                                         type="email"
@@ -275,36 +274,36 @@ const Checkout = () => {
                                         onBlur={form.handleBlur}
                                         className={checkInputHasError('confirmDeliveryEmail') ? 'hasError' : ''}
                                     />
-                                </InputGroup>
-                            </Row>
+                                </S.InputGroup>
+                            </S.Row>
                         </>
                     </Card>
 
                     <Card title="Pagamento" >
                         <>
-                            <Row>
-                                <BtnPagamento
+                            <S.Row>
+                                <S.BtnPagamento
                                     type='button'
                                     isactive={!payWithCard}
                                     onClick={() => setPayWithCard(false)}
                                 >
                                     <img src={boletoIcon} />
                                     Boleto bancário
-                                </BtnPagamento>
-                                <BtnPagamento
+                                </S.BtnPagamento>
+                                <S.BtnPagamento
                                     type='button'
                                     isactive={payWithCard}
                                     onClick={() => setPayWithCard(true)}
                                 >
                                     <img src={cardIcon} />
                                     Cartão de crédito
-                                </BtnPagamento>
-                            </Row>
+                                </S.BtnPagamento>
+                            </S.Row>
 
                             {payWithCard ? (
                                 <>
-                                    <Row className='margin'>
-                                        <InputGroup>
+                                    <S.Row className='margin'>
+                                        <S.InputGroup>
                                             <label htmlFor='cardHolderName'>Nome do titular do cartão</label>
                                             <input
                                                 type="text"
@@ -315,9 +314,9 @@ const Checkout = () => {
                                                 onBlur={form.handleBlur}
                                                 className={checkInputHasError('cardHolderName') ? 'hasError' : ''}
                                             />
-                                        </InputGroup>
+                                        </S.InputGroup>
 
-                                        <InputGroup>
+                                        <S.InputGroup>
                                             <label htmlFor='cpfHolderCard'>CPF do titular do cartão</label>
                                             <input
                                                 type='text'
@@ -328,12 +327,12 @@ const Checkout = () => {
                                                 onBlur={form.handleBlur}
                                                 className={checkInputHasError('cpfHolderCard') ? 'hasError' : ''}
                                             />
-                                        </InputGroup>
-                                    </Row>
+                                        </S.InputGroup>
+                                    </S.Row>
 
                                     <div className='margin'>
-                                        <Row>
-                                            <InputGroup>
+                                        <S.Row>
+                                            <S.InputGroup>
                                                 <label htmlFor='nameCard'>Nome no cartão</label>
                                                 <input
                                                     type="text"
@@ -344,9 +343,9 @@ const Checkout = () => {
                                                     onBlur={form.handleBlur}
                                                     className={checkInputHasError('nameCard') ? 'hasError' : ''}
                                                 />
-                                            </InputGroup>
+                                            </S.InputGroup>
 
-                                            <InputGroup>
+                                            <S.InputGroup>
                                                 <label htmlFor='numberCard'>Número do cartão</label>
                                                 <input
                                                     type="string"
@@ -357,9 +356,9 @@ const Checkout = () => {
                                                     onBlur={form.handleBlur}
                                                     className={checkInputHasError('numberCard') ? 'hasError' : ''}
                                                 />
-                                            </InputGroup>
+                                            </S.InputGroup>
 
-                                            <InputGroup maxWidth='123px'>
+                                            <S.InputGroup maxWidth='123px'>
                                                 <label htmlFor='dueMonth'>Mês do vencimento</label>
                                                 <input
                                                     type="number"
@@ -370,9 +369,9 @@ const Checkout = () => {
                                                     onBlur={form.handleBlur}
                                                     className={checkInputHasError('dueMonth') ? 'hasError' : ''}
                                                 />
-                                            </InputGroup>
+                                            </S.InputGroup>
 
-                                            <InputGroup maxWidth='123px'>
+                                            <S.InputGroup maxWidth='123px'>
                                                 <label htmlFor='expiryYear'>Ano de vencimento</label>
                                                 <input
                                                     type="number"
@@ -383,9 +382,9 @@ const Checkout = () => {
                                                     onBlur={form.handleBlur}
                                                     className={checkInputHasError('expiryYear') ? 'hasError' : ''}
                                                 />
-                                            </InputGroup>
+                                            </S.InputGroup>
 
-                                            <InputGroup maxWidth='48px'>
+                                            <S.InputGroup maxWidth='48px'>
                                                 <label htmlFor='codeCard'>CVV</label>
                                                 <input
                                                     type="number"
@@ -396,10 +395,10 @@ const Checkout = () => {
                                                     onBlur={form.handleBlur}
                                                     className={checkInputHasError('codeCard') ? 'hasError' : ''}
                                                 />
-                                            </InputGroup>
-                                        </Row>
-                                        <Row className='margin'>
-                                            <InputGroup maxWidth='140px'>
+                                            </S.InputGroup>
+                                        </S.Row>
+                                        <S.Row className='margin'>
+                                            <S.InputGroup maxWidth='140px'>
                                                 <label htmlFor="installment">Parcelamento</label>
                                                 <select
                                                     name="installment"
@@ -416,8 +415,8 @@ const Checkout = () => {
                                                         </option>
                                                     ))}
                                                 </select>
-                                            </InputGroup>
-                                        </Row>
+                                            </S.InputGroup>
+                                        </S.Row>
                                     </div>
                                 </>
                             ) : (
