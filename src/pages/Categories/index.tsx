@@ -2,20 +2,20 @@ import ProductsList from "../../components/ProductList";
 import { useGetActionGamesQuery, useGetFightGamesQuery, useGetRpgGamesQuery, useGetSimulationGamesQuery, useGetSportGamesQuery } from "../../services/api";
 
 const Categories = () => {
-    const { data: gamesAcao } = useGetActionGamesQuery()
-    const { data: gamesEsporte } = useGetSportGamesQuery()
-    const { data: gamesSimulacao } = useGetSimulationGamesQuery()
-    const { data: gamesLuta } = useGetFightGamesQuery()
-    const { data: gamesRpg } = useGetRpgGamesQuery()
+    const { data: gamesAction, isLoading: isLoadingGamesAction } = useGetActionGamesQuery()
+    const { data: gamesSport, isLoading: isLoadingGamesSport } = useGetSportGamesQuery()
+    const { data: gamesSimulation, isLoading: isLoadingGamesSimulation } = useGetSimulationGamesQuery()
+    const { data: gamesFight, isLoading: isLoadingGamesFight } = useGetFightGamesQuery()
+    const { data: gamesRpg, isLoading: isLoadingGamesRpg } = useGetRpgGamesQuery()
 
-    if (gamesAcao && gamesEsporte && gamesSimulacao && gamesLuta && gamesRpg) {
+    if (gamesAction && gamesSport && gamesSimulation && gamesFight && gamesRpg) {
         return (
             <>
-                <ProductsList games={gamesAcao} title="Ação" background='black' id="action" />
-                <ProductsList games={gamesEsporte} title="Esporte" background='gray' id="sport" />
-                <ProductsList games={gamesSimulacao} title="Simulação" background='black' id="simulation" />
-                <ProductsList games={gamesLuta} title="Luta" background='gray' id="figth" />
-                <ProductsList games={gamesRpg} title="RPG" background='black' id="rpg" />
+                <ProductsList games={gamesAction} isLoading={isLoadingGamesAction} title="Ação" background='black' id="action" />
+                <ProductsList games={gamesSport} isLoading={isLoadingGamesSport} title="Esporte" background='gray' id="sport" />
+                <ProductsList games={gamesSimulation} isLoading={isLoadingGamesSimulation} title="Simulação" background='black' id="simulation" />
+                <ProductsList games={gamesFight} isLoading={isLoadingGamesFight} title="Luta" background='gray' id="figth" />
+                <ProductsList games={gamesRpg} title="RPG" isLoading={isLoadingGamesRpg} background='black' id="rpg" />
             </>
         )
     }

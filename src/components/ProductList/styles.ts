@@ -3,7 +3,7 @@ import { Card } from "../Product/styles";
 import { Props } from '.'
 import { BreakPoints } from "../../styles/global";
 
-export const Container = styled.section<Omit<Props, 'title' | 'games'>>`
+export const Container = styled.section<Omit<Props, 'title' | 'games' | 'isLoading'>>`
     padding: 32px 0;
     background: ${({ background }) => (
         background === 'black' ? 'var(--black)' : 'var(--gray)'

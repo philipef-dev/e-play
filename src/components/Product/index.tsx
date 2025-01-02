@@ -13,11 +13,11 @@ type Props = {
 }
 
 const Product = ({ title, system, description, genero, image, infos, id }: Props) => {
-    const getDescription = (description: string) => {
-        if (description.length > 92) {
-            return description.slice(0, 92) + '...'
+    const getDescription = (text: string) => {
+        if (text.length > 92) {
+            return text.slice(0, 92) + '...'
         }
-        return description
+        return text
     }
 
     return (

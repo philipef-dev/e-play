@@ -3,16 +3,13 @@ import Button from "../Button"
 import { ImageBanner, Precos, Titulo } from "./styles"
 import { parseToBrl } from '../../helpers/formatPrice'
 import { useGetGameDestaqueQuery } from "../../services/api"
+import Loader from "../Loader"
 
 const Banner = () => {
-    const {data: game} = useGetGameDestaqueQuery('destaque')
+    const { data: game } = useGetGameDestaqueQuery('destaque')
 
-    if(!game) {
-        return (
-            <div className="container">
-                <h4>Carregando</h4>
-            </div>
-        )
+    if (!game) {
+        return <Loader />
     }
 
     return (

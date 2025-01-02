@@ -3,6 +3,7 @@ import Gallery from '../../components/Gallery';
 import Hero from '../../components/Hero';
 import Section from '../../components/Section';
 import { useGetProductQuery } from '../../services/api';
+import Loader from '../../components/Loader';
 
 const Product = () => {
     const { id } = useParams();
@@ -10,11 +11,7 @@ const Product = () => {
     const { data: game } = useGetProductQuery(`${id}`)
 
     if (!game) {
-        return (
-            <div className='container'>
-                <h3>Carregando...</h3>
-            </div>
-        )
+        return <Loader />
     }
 
     return (
