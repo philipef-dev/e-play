@@ -1,14 +1,14 @@
-import { SideBar, CartContainer, CartItem, Overlay, Quantity, Amount, BtnCloseCart } from "./styles"
-import Tag from "../Tag"
+import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
+import Tag from "../Tag"
 import { remove, closeCart } from "../../store/reducers/cart"
-import { formatPrice, getTotalPrice } from "../../helpers/formatPrice"
-import { useNavigate } from "react-router-dom"
+import { getTotalPrice, parseToBrl } from "../../helpers/formatPrice"
 
 import deleteIcon from '../../assets/images/deleteIcon.png';
 import closeIcon from '../../assets/images/closeIcon.svg';
 
+import * as S from "./styles"
 
 const Cart = () => {
     const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -31,27 +31,27 @@ const Cart = () => {
     }
 
     return (
-        <CartContainer className={isOpen ? 'is-open' : ''}>
-            <Overlay onClick={closeSideBar} />
-            <SideBar>
+        <S.CartContainer className={isOpen ? 'is-open' : ''}>
+            <S.Overlay onClick={closeSideBar} />
+            <S.SideBar>
                 <ul>
-                    <BtnCloseCart
+                    <S.BtnCloseCart
                         className="closeCart"
                         type="button"
                         title="Fechar carrinho"
                         onClick={closeSideBar}
                     >
                         <img src={closeIcon} />
-                    </BtnCloseCart >
+                    </S.BtnCloseCart>
                     {items.map((item) => {
                         return (
-                            <CartItem key={item.id}>
+                            <S.CartItem key={item.id}>
                                 <img src={item.media.thumbnail} />
                                 <div>
                                     <h3>{item.name}</h3>
                                     <Tag size="small">{item.details.category}</Tag>
                                     <Tag size="small">{item.details.system}</Tag>
-                                    <span>{formatPrice(item.prices.current)}</span>
+                                    <span>{parseToBrl(item.prices.current)}</span>
                                 </div>
                                 <button
                                     className="deleteItem"
@@ -61,14 +61,14 @@ const Cart = () => {
                                 >
                                     <img src={deleteIcon} />
                                 </button>
-                            </CartItem>
+                            </S.CartItem>
                         )
                     })}
                 </ul>
-                <Quantity> {items.length} jogos(s) no carrinho</Quantity>
-                <Amount>Total de {formatPrice(getTotalPrice(items))} <br />
+                <S.Quantity> {items.length} jogos(s) no carrinho</S.Quantity>
+                <S.Amount>Total de {parseToBrl(getTotalPrice(items))} <br />
                     <span> em até 6x sem juros</span>
-                </Amount>
+                </S.Amount>
                 <button
                     className="btnBuy"
                     title="Botão de comprar"
@@ -77,8 +77,8 @@ const Cart = () => {
                 >
                     Continuar com a compra
                 </button>
-            </SideBar>
-        </CartContainer >
+            </S.SideBar>
+        </S.CartContainer>
     )
 }
 

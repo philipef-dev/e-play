@@ -2,7 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Game } from '../pages/Home'
 
 type Products =  { 
-    id: number; price: number; 
+    id: number; 
+    price: number; 
 }
 
 type PurchasePayload = {

@@ -1,10 +1,11 @@
+import { useDispatch } from 'react-redux';
 import { Game } from '../../pages/Home';
 import Button from '../Button';
 import Tag from '../Tag';
-import { BannerHero, Info } from "./styles";
-import { useDispatch } from 'react-redux';
 import { add, openCart } from '../../store/reducers/cart';
-import { formatPrice } from '../../helpers/formatPrice';
+import { parseToBrl } from '../../helpers/formatPrice';
+
+import { BannerHero, Info } from "./styles";
 
 type Props = {
     game: Game
@@ -35,7 +36,7 @@ const Hero = ({ game }: Props) => {
                     {!isDiscountNull ? (
                         <>
                             <p>
-                                <span className='discount'>De {formatPrice(game.prices.old)}</span> Por {formatPrice(game.prices.discount)}
+                                <span className='discount'>De {parseToBrl(game.prices.old)}</span> Por {parseToBrl(game.prices.discount)}
                             </p>
                         </>
                     ) : (
@@ -43,7 +44,7 @@ const Hero = ({ game }: Props) => {
                             {!isPriceCurrentNull ? (
                                 <>
                                     <p>
-                                        <span> {formatPrice(game.prices.current)} </span>
+                                        <span> {parseToBrl(game.prices.current)} </span>
                                     </p>
 
                                 </>

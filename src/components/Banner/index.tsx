@@ -1,7 +1,7 @@
 import Tag from "../Tag"
 import Button from "../Button"
 import { ImageBanner, Precos, Titulo } from "./styles"
-import { formatPrice } from '../../helpers/formatPrice'
+import { parseToBrl } from '../../helpers/formatPrice'
 import { useGetGameDestaqueQuery } from "../../services/api"
 
 const Banner = () => {
@@ -22,8 +22,8 @@ const Banner = () => {
                 <div>
                     <Titulo>{game.name} </Titulo>
                     <Precos>
-                        De <span> {formatPrice(game.prices.old)}</span>  <br />
-                        por apenas {formatPrice(game.prices.current)}
+                        De <span> {parseToBrl(game.prices.old)}</span>  <br />
+                        por apenas {parseToBrl(game.prices.current)}
                     </Precos>
                 </div>
                 <div>

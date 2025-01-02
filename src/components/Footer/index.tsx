@@ -1,40 +1,77 @@
 import { Link } from "react-router-dom";
-import { FooterSection, FooterTitulo, Links } from "./styles";
+import { HashLink } from "react-router-hash-link";
+
+import * as S from "./styles";
 
 const Footer = () => (
-    <FooterSection>
+    <S.FooterSection>
         <div className="container">
-            <FooterTitulo>Categorias</FooterTitulo>
-            <Links>
+            <S.FooterTitulo>Categorias</S.FooterTitulo>
+            <S.Links>
                 <li>
-                    <Link to="/categories#action">Ação</Link>
+                    <Link
+                        title="Clique aqui para acessar jogos de ação"
+                        to="/categories#action"
+                    >
+                        Ação
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/categories#sport">Esportes</Link>
+                    <Link
+                        to="/categories#sport"
+                        title="Clique aqui para acessar jogos de esportes"
+                    >
+                        Esportes
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/categories#simulation">Simulação</Link>
+                    <Link
+                        to="/categories#simulation"
+                        title="Clique aqui para acessar jogos de simulação"
+                    >
+                        Simulação
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/categories#figth">Luta</Link>
+                    <Link
+                        to="/categories#figth"
+                        title="Clique aqui para acessar jogos de luta"
+                    >
+                        Luta
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/categories#rpg">RPG</Link>
+                    <Link
+                        to="/categories#rpg"
+                        title="Clique aqui para acessar jogos de RPG"
+                    >
+                        RPG
+                    </Link>
                 </li>
-            </Links>
+            </S.Links>
 
-            <FooterTitulo>Acesso Rápido</FooterTitulo>
-            <Links>
+            <S.FooterTitulo>Acesso Rápido</S.FooterTitulo>
+            <S.Links>
                 <li>
-                    <Link to="/#on-sale">Promoções</Link>
+                    <HashLink
+                        to="/#on-sale"
+                        title="Clique aqui para acessar a seção de promoção"
+                    >
+                        Promoções
+                    </HashLink>
                 </li>
                 <li>
-                    <Link to="/#comming-soon">Em breve</Link>
+                    <HashLink
+                        to="/#comming-soon"
+                        title="Clique aqui para acessar a seção de em breve"
+                    >
+                        Em breve
+                    </HashLink>
                 </li>
-            </Links>
+            </S.Links>
             <p>2024 - © E-PLAY Todos os direitos reservados</p>
         </div>
-    </FooterSection>
+    </S.FooterSection>
 );
 
 export default Footer;

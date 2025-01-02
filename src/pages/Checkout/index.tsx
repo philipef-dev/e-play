@@ -1,16 +1,16 @@
+import { Navigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import * as Yup from 'yup'
+import { useFormik } from 'formik'
+import { RootReducer } from '../../store'
 import Button from '../../components/Button'
 import Card from '../../components/Card'
+import { usePurchaseMutation } from '../../services/api'
+import { getTotalPrice, parseToBrl } from '../../helpers/formatPrice'
 import { BtnPagamento, InputGroup, Row } from './styles'
 import boletoIcon from '../../assets/images/boletoIcon.png'
 import cardIcon from '../../assets/images/cardIcon.png'
-import { useEffect, useState } from 'react'
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
-import { usePurchaseMutation } from '../../services/api'
-import { RootReducer } from '../../store'
-import { Navigate } from 'react-router-dom'
-import { formatPrice, getTotalPrice } from '../../helpers/formatPrice'
-import { useSelector } from 'react-redux'
 // import { useDispatch, useSelector } from 'react-redux'
 // import { clearCart } from '../../store/reducers/cart'
 
@@ -37,7 +37,7 @@ const Checkout = () => {
                 intallmentsArray.push({
                     quantity: i,
                     amount: totalPrice / i,
-                    formattedAmount: formatPrice(totalPrice / i)
+                    formattedAmount: parseToBrl(totalPrice / i)
                 })
             }
 
@@ -48,7 +48,6 @@ const Checkout = () => {
         }
 
     }, [totalPrice])
-
 
     const form = useFormik({
         initialValues: {

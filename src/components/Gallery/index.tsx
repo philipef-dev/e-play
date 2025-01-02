@@ -1,10 +1,11 @@
+import { useState } from "react";
+import { GalleryItem } from "../../pages/Home";
 import Section from "../Section"
 import zoomIcon from '../../assets/images/botao-zoom.svg'
 import playIcon from '../../assets/images/botao-play.svg'
 import closeIcon from '../../assets/images/closeIcon.svg'
-import { Action, Item, Items, Modal, ModalContent } from "./styles";
-import { useState } from "react";
-import { GalleryItem } from "../../pages/Home";
+
+import * as S from "./styles";
 
 type Props = {
     defaultCover: string
@@ -44,9 +45,9 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
     return (
         <>
             <Section title="Galeria" background="black">
-                <Items >
+                <S.Items >
                     {items.map((media, index) => (
-                        <Item key={media.url}
+                        <S.Item key={media.url}
                             onClick={() => {
                                 setModal({
                                     isVisible: true,
@@ -56,15 +57,15 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
                             }}
                         >
                             <img src={getMediaCover(media)} alt={`Mídia ${index + 1} de ${name}`} />
-                            <Action>
+                            <S.Action>
                                 <img src={getMediaIcon(media)} alt={`Media ${index + 1}`} />
-                            </Action>
-                        </Item>
+                            </S.Action>
+                        </S.Item>
                     ))}
-                </Items >
+                </S.Items >
             </Section >
-            <Modal className={modal.isVisible ? 'visible' : ''}>
-                <ModalContent className="container" >
+            <S.Modal className={modal.isVisible ? 'visible' : ''}>
+                <S.ModalContent className="container" >
                     <header>
                         <h4>{name}</h4>
                         <img
@@ -80,9 +81,9 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
                         />
                     )}
 
-                </ModalContent >
+                </S.ModalContent >
                 <div className="overlay" onClick={() => closeModal()} />
-            </Modal >
+            </S.Modal >
         </>
     )
 }
