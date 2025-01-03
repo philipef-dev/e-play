@@ -18,13 +18,13 @@ export const HeaderBar = styled.div`
         font-weight: bold;
     }
 
-    div {
+    > div {
          display: flex;
          align-items: center;
     }
 
-    @media (max-width: ${BreakPoints.tablet}) {
-        /* display: none ; */
+    @media (min-width: ${BreakPoints.tablet}) {
+        display: none ;
     }
 `
 
@@ -47,5 +47,19 @@ export const CartButton = styled.a`
         margin-left: 16px;
     }
 `
+export const Hamburguer = styled.div`
+    width: 32px;
+    
+    span {
+        height: 2px;
+        display: block;
+        width: 100%;
+        background-color: var(--white);
+        margin: 4px 0;
+    }
 
+    @media (min-width: ${BreakPoints.tablet}) {
+        display: none;
+    }
+`
 

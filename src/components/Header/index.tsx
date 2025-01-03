@@ -19,6 +19,11 @@ const Header = () => {
     return (
         <S.HeaderBar>
             <div>
+                <S.Hamburguer>
+                    <span />
+                    <span />
+                    <span />
+                </S.Hamburguer>
                 <Link to="/" title="Clique aqui para voltar a página inicial">
                     <img src={logoEplay} alt="logo e-play" />
                 </Link>
