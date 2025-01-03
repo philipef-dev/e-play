@@ -10,7 +10,7 @@ export const Links = styled.ul`
     @media (max-width: ${BreakPoints.tablet}) {
         margin-left: 0;
         display: block;
-    }
+ }
 `
 
 export const HeaderBar = styled.div`
@@ -40,8 +40,7 @@ export const HeaderRow = styled.div`
          @media (max-width: ${BreakPoints.tablet}) {
             flex: 1; 
             justify-content: space-between;
-
-            ${Links} {
+         ${Links} {
                 display: none;
             }
         }
@@ -49,17 +48,8 @@ export const HeaderRow = styled.div`
     
 `
 
-export const NavMobile = styled.nav`
-    display: none;
-
-    &.is-open {
-        display: block;
-    }
-
-`
-
 export const LinksItem = styled.li`
-    margin-right: 16px;
+    font-weight: 700;
 
     @media (max-width: ${BreakPoints.tablet}) {
         margin-right: 0;
