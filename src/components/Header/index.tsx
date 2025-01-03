@@ -7,10 +7,12 @@ import logoEplay from '../../assets/images/logo.svg'
 import carrinhoIcon from '../../assets/images/carrinho.svg'
 
 import * as S from './styles'
+import { useState } from 'react'
 
 const Header = () => {
-    const { items } = useSelector((state: RootReducer) => state.cart)
     const dispatch = useDispatch()
+    const { items } = useSelector((state: RootReducer) => state.cart)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const openSider = () => {
         dispatch(openCart())
@@ -18,47 +20,49 @@ const Header = () => {
 
     return (
         <S.HeaderBar>
-            <div>
-                <S.Hamburguer>
-                    <span />
-                    <span />
-                    <span />
-                </S.Hamburguer>
-                <Link to="/" title="Clique aqui para voltar a página inicial">
-                    <img src={logoEplay} alt="logo e-play" />
-                </Link>
-                <nav>
-                    <S.Links>
-                        <S.LinksItem>
-                            <Link
-                                to='/categories'
-                                title='Clique aqui para ir para a página de categorias'
-                            >
-                                Categorias
-                            </Link>
-                        </S.LinksItem>
-                        <S.LinksItem>
-                            <HashLink
-                                to="/#comming-soon"
-                                title='Clique aqui para acessar os jogos que estão por vir'
-                            >
-                                Em breve
-                            </HashLink>
-                        </S.LinksItem>
-                        <S.LinksItem>
-                            <HashLink
-                                to="/#on-sale"
-                                title='Clique aqui para acessar os jogos em promoção'
-                            >
-                                Promoções
-                            </HashLink>
-                        </S.LinksItem>
-                    </S.Links>
-                </nav>
-            </div>
-            <S.CartButton onClick={openSider}>
-                {items.length} - produtos(s) <img src={carrinhoIcon} alt="iconeCarrinho" />
-            </S.CartButton>
+            <S.HeaderRow>
+                <div>
+                    <S.Hamburguer onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        <span />
+                        <span />
+                        <span />
+                    </S.Hamburguer>
+                    <Link to="/" title="Clique aqui para voltar a página inicial">
+                        <img src={logoEplay} alt="logo e-play" />
+                    </Link>
+                    <S.CartButton onClick={openSider}>
+                        {items.length} <span> - produtos(s) </span> <img src={carrinhoIcon} alt="iconeCarrinho" />
+                    </S.CartButton>
+                </div>
+            </S.HeaderRow>
+            <S.NavMobile className={isMenuOpen ? 'is-open' : ''}>
+                <S.Links>
+                    <S.LinksItem>
+                        <Link
+                            to='/categories'
+                            title='Clique aqui para ir para a página de categorias'
+                        >
+                            Categorias
+                        </Link>
+                    </S.LinksItem>
+                    <S.LinksItem>
+                        <HashLink
+                            to="/#comming-soon"
+                            title='Clique aqui para acessar os jogos que estão por vir'
+                        >
+                            Em breve
+                        </HashLink>
+                    </S.LinksItem>
+                    <S.LinksItem>
+                        <HashLink
+                            to="/#on-sale"
+                            title='Clique aqui para acessar os jogos em promoção'
+                        >
+                            Promoções
+                        </HashLink>
+                    </S.LinksItem>
+                </S.Links>
+            </S.NavMobile>
         </S.HeaderBar>
     )
 }
