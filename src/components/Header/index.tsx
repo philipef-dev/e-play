@@ -35,11 +35,7 @@ const Header = () => {
                     </S.CartButton>
                 </div>
             </S.HeaderRow>
-<<<<<<< HEAD
-            {/* Assim que deve ficar  */}
-=======
             {/* Assim que esta funcionando - ok ok ok  */}
->>>>>>> dev-05
             <S.NavMobile className={isMenuOpen ? 'is-open' : ''}>
                 <S.Links>
                     <S.LinksItem>
