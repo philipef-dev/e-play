@@ -5,7 +5,6 @@ export const Links = styled.ul`
     display: flex;
     gap: 16px;
     margin-left: 40px;  
-    /* teststando asdfskjdfsdlkf */
     align-items: center;
 
     @media (max-width: ${BreakPoints.tablet}) {
@@ -47,6 +46,14 @@ export const HeaderRow = styled.div`
         }
     }
     
+`
+// Nav Mobile ok 
+export const NavMobile = styled.nav`
+    display: none;
+
+    &.is-open {
+        display: block;
+    }
 `
 
 export const LinksItem = styled.li`
