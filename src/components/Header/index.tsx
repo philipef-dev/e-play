@@ -30,12 +30,39 @@ const Header = () => {
                     <Link to="/" title="Clique aqui para voltar a página inicial">
                         <img src={logoEplay} alt="logo e-play" />
                     </Link>
-                    <S.CartButton onClick={openSider}>
+                    <S.Links>
+                        <S.LinksItem>
+                            <Link
+                                to='/categories'
+                                title='Clique aqui para ir para a página de categorias'
+                            >
+                                Categorias
+                            </Link>
+                        </S.LinksItem>
+                        <S.LinksItem>
+                            <HashLink
+                                to="/#comming-soon"
+                                title='Clique aqui para acessar os jogos que estão por vir'
+                            >
+                                Em breve
+                            </HashLink>
+                        </S.LinksItem>
+                        <S.LinksItem>
+                            <HashLink
+                                to="/#on-sale"
+                                title='Clique aqui para acessar os jogos em promoção'
+                            >
+                                Promoções
+                            </HashLink>
+                        </S.LinksItem>
+                    </S.Links>                    
+                </div>
+                <S.CartButton onClick={openSider}>
                         {items.length} <span> - produtos(s) </span> <img src={carrinhoIcon} alt="iconeCarrinho" />
                     </S.CartButton>
-                </div>
             </S.HeaderRow>
-            {/* Funcionando - - Branch dev 06 FUNCIONANDO */}
+
+            {/* Funcionando - - Branch dev 06 FUNCIONANDO - Voltar aqui em breve */}
             <S.NavMobile className={isMenuOpen ? 'is-open' : ''}>
                 <S.Links>
                     <S.LinksItem>

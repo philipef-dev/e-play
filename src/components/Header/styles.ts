@@ -36,16 +36,17 @@ export const HeaderRow = styled.div`
     > div {
          display: flex;
          align-items: center;      
+         justify-content: space-between;
          
          @media (max-width: ${BreakPoints.tablet}) {
             flex: 1; 
             justify-content: space-between;
-         ${Links} {
+            
+            ${Links} {
                 display: none;
             }
         }
-    }
-    
+    }    
 `
 // Nav Mobile ok 
 export const NavMobile = styled.nav`
