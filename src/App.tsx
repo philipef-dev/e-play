@@ -26,3 +26,6 @@ function App() {
 }
 
 export default App
+
+
+// <https://www.figma.com/design/FiFpwvwwHX0rCbrXatjMg4/EPLAY?node-id=1-3&node-type=frame&t=g3ARArlQh7tUFSec-0>
