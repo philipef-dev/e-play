@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,7 +8,6 @@ import logoEplay from '../../assets/images/logo.svg'
 import carrinhoIcon from '../../assets/images/carrinho.svg'
 
 import * as S from './styles'
-import { useState } from 'react'
 
 const Header = () => {
     const dispatch = useDispatch()
@@ -60,7 +60,7 @@ const Header = () => {
                     </S.Links>
                 </div>
                 <S.CartButton onClick={openSider}>
-                    {items.length}   <span> - produtos(s) </span> <img src={carrinhoIcon} alt="iconeCarrinho" />
+                    {items.length}  <span> - produtos(s)</span> <img src={carrinhoIcon} alt="iconeCarrinho" />
                 </S.CartButton>
             </S.HeaderRow>
 

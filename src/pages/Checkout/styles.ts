@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BreakPoints } from "../../styles/global";
 
 type btnPagamentoProps = {
     type: string
@@ -12,6 +13,10 @@ type inputGroupProps = {
 export const Row = styled.div`
     display: flex;
     column-gap: 24px;
+
+    @media (max-width: ${BreakPoints.tablet}) {
+        display: block;        
+    }
 `
 
 export const InputGroup = styled.div<inputGroupProps>`   
@@ -33,6 +38,7 @@ export const InputGroup = styled.div<inputGroupProps>`
         height: 32px;
         border: 1px solid var(--white);
         width: 100%;
+        margin-bottom: 10px;
     }   
     
     .hasError {
@@ -54,4 +60,11 @@ export const BtnPagamento = styled.button<btnPagamentoProps>`
     img {
         margin-right: 8px;
     }
+
+    @media (max-width: ${BreakPoints.tablet}) {
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+}
 `
