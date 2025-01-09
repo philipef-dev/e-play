@@ -15,13 +15,13 @@
 
 <h2 id="project">📁 Projeto</h2>
 
-O projeto consiste na criação de uma loja virtual responsiva de games, permitindo que os usuários visualizem os produtos disponíveis, adicionem itens ao carrinho e concluam a compra por meio de um processo de checkout. A aplicação foi desenvolvida com o objetivo de praticar conceitos de ReactJS, Redux, e Styled Components, além de implementar validações de formulários com Formik e Yup.
+O projeto consiste na criação de uma loja virtual responsiva de games, permitindo que os usuários visualizem os produtos disponíveis, adicionem itens ao carrinho e concluam a compra por meio de um processo de checkout. A aplicação foi desenvolvida com o objetivo de praticar conceitos de React.js, Redux, e Styled Components, além de implementar validações de formulários com Formik e Yup.
 
 !["Portfólio"](./src/assets/images/portfolio.png)
 
 <h2 id="technologies">💻 Tecnologias</h2>
 
-- [ReactJS](https://reactjs.org/)
+- [React.js](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 - [React Router DOM](https://reactrouter.com/web/guides/quick-start)
 - [Formik](https://formik.org/)

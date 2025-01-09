@@ -33,6 +33,12 @@ export const HeaderRow = styled.div`
     align-items: center;
     justify-content: space-between;
 
+    .logo {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+     }
+
     > div {
          display: flex;
          align-items: center;      

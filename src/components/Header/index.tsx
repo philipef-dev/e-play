@@ -27,9 +27,11 @@ const Header = () => {
                         <span />
                         <span />
                     </S.Hamburguer>
-                    <Link to="/" title="Clique aqui para voltar a página inicial">
-                        <img src={logoEplay} alt="logo e-play" />
-                    </Link>
+                    <div className='logo'>
+                        <Link to="/" title="Clique aqui para voltar a página inicial">
+                            <img src={logoEplay} alt="logo e-play" />
+                        </Link>
+                    </div>
                     <S.Links>
                         <S.LinksItem>
                             <Link
@@ -55,14 +57,13 @@ const Header = () => {
                                 Promoções
                             </HashLink>
                         </S.LinksItem>
-                    </S.Links>                    
+                    </S.Links>
                 </div>
                 <S.CartButton onClick={openSider}>
-                        {items.length} <span> - produtos(s) </span> <img src={carrinhoIcon} alt="iconeCarrinho" />
-                    </S.CartButton>
+                    {items.length}   <span> - produtos(s) </span> <img src={carrinhoIcon} alt="iconeCarrinho" />
+                </S.CartButton>
             </S.HeaderRow>
 
-            {/* Funcionando - - Branch dev 06 FUNCIONANDO - Voltar aqui em breve */}
             <S.NavMobile className={isMenuOpen ? 'is-open' : ''}>
                 <S.Links>
                     <S.LinksItem>
@@ -91,7 +92,7 @@ const Header = () => {
                     </S.LinksItem>
                 </S.Links>
             </S.NavMobile>
-        </S.HeaderBar>
+        </S.HeaderBar >
     )
 }
 
